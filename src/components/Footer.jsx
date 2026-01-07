@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter } from 'lucide-react';
 import siteConfig from '../config/siteConfig';
 import './Footer.css';
 
@@ -14,7 +14,7 @@ const Footer = () => {
                     {/* Company Info */}
                     <div className="footer-column">
                         <div className="footer-logo">
-                            <img src="/xporia-logo.jpg" alt="Xporia Overseas" />
+                            <img src="/xporia-logo-new.png" alt="Xporia Overseas" />
                         </div>
                         <p className="footer-description">
                             {siteConfig.company.description}
@@ -25,6 +25,7 @@ const Footer = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="footer-social-link"
+                                data-social="instagram"
                                 aria-label="Instagram"
                             >
                                 <Instagram size={20} />
@@ -34,6 +35,7 @@ const Footer = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="footer-social-link"
+                                data-social="linkedin"
                                 aria-label="LinkedIn"
                             >
                                 <Linkedin size={20} />
@@ -43,18 +45,10 @@ const Footer = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="footer-social-link"
+                                data-social="twitter"
                                 aria-label="Twitter"
                             >
                                 <Twitter size={20} />
-                            </a>
-                            <a
-                                href={siteConfig.social.facebook}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="footer-social-link"
-                                aria-label="Facebook"
-                            >
-                                <Facebook size={20} />
                             </a>
                         </div>
                     </div>

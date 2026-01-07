@@ -25,10 +25,9 @@ const siteConfig = {
 
   // Social Media (PLACEHOLDER - Update when available)
   social: {
-    instagram: "https://instagram.com/xporiaoverseas",
-    linkedin: "https://linkedin.com/company/xporiaoverseas",
-    twitter: "https://twitter.com/xporiaoverseas",
-    facebook: "https://facebook.com/xporiaoverseas",
+    instagram: "https://www.instagram.com/xporiaoverseas?igsh=YjBjdnF4bHdkdjh0",
+    linkedin: "https://www.linkedin.com/in/xporia-overseas-7873343a4",
+    twitter: "https://x.com/xporiaoverseas?s=11",
   },
 
   // Product Categories (PLACEHOLDER)
