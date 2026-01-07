@@ -1,0 +1,132 @@
+.quality-section {
+    background: var(--color-bg-light);
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-20);
+}
+
+.certification-card {
+    background: var(--color-bg-white);
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+}
+
+.certification-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-gold);
+}
+
+.certification-badge {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-gold);
+    color: var(--color-primary-white);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-gold);
+    transition: all var(--transition-base);
+}
+
+.certification-card:hover .certification-badge {
+    transform: scale(1.1) rotate(10deg);
+}
+
+.certification-name {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary-blue);
+    margin-bottom: var(--space-2);
+}
+
+.certification-description {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+/* Values Section */
+.values-section {
+    padding-top: var(--space-16);
+    border-top: 2px solid var(--color-border);
+}
+
+.values-title {
+    font-size: var(--text-3xl);
+    font-family: var(--font-display);
+    color: var(--color-primary-blue);
+    text-align: center;
+    margin-bottom: var(--space-12);
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-8);
+}
+
+.value-card {
+    background: var(--color-bg-white);
+    padding: var(--space-8);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.value-icon {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(10, 77, 140, 0.1) 0%, rgba(30, 107, 184, 0.1) 100%);
+    color: var(--color-primary-blue);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-4);
+    transition: all var(--transition-base);
+}
+
+.value-card:hover .value-icon {
+    background: var(--gradient-blue);
+    color: var(--color-primary-white);
+    transform: scale(1.1);
+}
+
+.value-title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary-blue);
+    margin-bottom: var(--space-3);
+}
+
+.value-description {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .certifications-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--space-4);
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+}
