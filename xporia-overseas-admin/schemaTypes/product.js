@@ -25,11 +25,7 @@ export default {
       title: "Origin",
       type: "string"
     },
-    {
-      name: "grade",
-      title: "Grade / Specs",
-      type: "string"
-    },
+    
     {
       name: "packaging",
       title: "Packaging",
@@ -40,11 +36,7 @@ export default {
       title: "MOQ",
       type: "string"
     },
-    {
-      name: "deliveryTime",
-      title: "Delivery Time",
-      type: "string"
-    },
+    
     {
       name: "paymentTerms",
       title: "Payment Terms",
