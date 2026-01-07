@@ -1,0 +1,25 @@
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 70px;
+  /* Offset for fixed navbar */
+}
+
+.page-placeholder {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-16);
+}
+
+.page-placeholder h1 {
+  font-size: var(--text-4xl);
+  color: var(--color-primary-blue);
+}
