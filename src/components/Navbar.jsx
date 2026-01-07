@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Plane } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -33,7 +33,9 @@ const Navbar = () => {
             <div className="container navbar-container">
                 {/* Logo */}
                 <Link to="/" className="navbar-logo">
-                    <img src="/xporia-logo.jpg" alt="Xporia Overseas" className="logo-image" />
+                    <div className="logo-wrapper">
+                        <img src="/xporia-logo-new.png" alt="Xporia Overseas" className="logo-image" />
+                    </div>
                 </Link>
 
                 {/* Desktop Navigation */}

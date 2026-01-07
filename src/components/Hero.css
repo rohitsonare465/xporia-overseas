@@ -71,11 +71,12 @@
 /* Title & Text */
 .hero-title {
     font-size: var(--text-6xl);
-    font-family: var(--font-display);
-    font-weight: 900;
+    font-family: var(--font-brand);
+    font-weight: 800;
     color: var(--color-primary-white);
     margin-bottom: var(--space-6);
     line-height: 1.1;
+    letter-spacing: 0.5px;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     animation-delay: 0.2s;
 }
