@@ -1,0 +1,590 @@
+/* Import Premium Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+
+/* ============================================
+   DESIGN SYSTEM - XPORIA OVERSEAS
+   Luxury Import/Export Website
+   Colors: Blue/White primary, Golden accents
+   ============================================ */
+
+:root {
+  /* Primary Colors - Blue/White */
+  --color-primary-blue: #0A4D8C;
+  --color-primary-blue-light: #1E6BB8;
+  --color-primary-blue-dark: #063761;
+  --color-primary-white: #FFFFFF;
+  --color-bg-light: #F8FAFB;
+  --color-bg-white: #FFFFFF;
+  
+  /* Secondary Colors - Golden Shades */
+  --color-gold: #D4AF37;
+  --color-gold-light: #F4D03F;
+  --color-gold-dark: #B8960C;
+  --color-gold-metallic: #FFD700;
+  
+  /* Accent Colors */
+  --color-accent-blue: #2196F3;
+  --color-accent-orange: #FF9800;
+  
+  /* Neutral Colors */
+  --color-text-primary: #1A2332;
+  --color-text-secondary: #5A6C7D;
+  --color-text-light: #8B9CAA;
+  --color-border: #E1E8ED;
+  --color-border-light: #F0F4F7;
+  
+  /* Gradient Definitions */
+  --gradient-blue: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-primary-blue-light) 100%);
+  --gradient-gold: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold-light) 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(10, 77, 140, 0.95) 0%, rgba(30, 107, 184, 0.90) 100%);
+  --gradient-overlay: linear-gradient(180deg, rgba(10, 77, 140, 0.8) 0%, rgba(6, 55, 97, 0.95) 100%);
+  
+  /* Glassmorphism Effects */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  
+  /* Shadows - Luxury Multi-layer */
+  --shadow-sm: 0 2px 8px rgba(10, 77, 140, 0.08);
+  --shadow-md: 0 4px 16px rgba(10, 77, 140, 0.12);
+  --shadow-lg: 0 8px 32px rgba(10, 77, 140, 0.16);
+  --shadow-xl: 0 16px 48px rgba(10, 77, 140, 0.20);
+  --shadow-gold: 0 8px 24px rgba(212, 175, 55, 0.25);
+  
+  /* Typography Scale */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Z-index Scale */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal: 400;
+  --z-popover: 500;
+  --z-tooltip: 600;
+}
+
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-white);
+  overflow-x: hidden;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+h1 {
+  font-size: var(--text-5xl);
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: var(--text-4xl);
+  font-family: var(--font-display);
+}
+
+h3 {
+  font-size: var(--text-3xl);
+}
+
+h4 {
+  font-size: var(--text-2xl);
+}
+
+h5 {
+  font-size: var(--text-xl);
+}
+
+h6 {
+  font-size: var(--text-lg);
+}
+
+p {
+  margin-bottom: var(--space-4);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-primary-blue);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-primary-blue-light);
+}
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.container-wide {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.section {
+  padding: var(--space-20) 0;
+}
+
+.section-sm {
+  padding: var(--space-12) 0;
+}
+
+.section-lg {
+  padding: var(--space-24) 0;
+}
+
+/* ============================================
+   BUTTONS - Premium 3D Effects
+   ============================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-8);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: 1;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn-primary {
+  background: var(--gradient-blue);
+  color: var(--color-primary-white);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-gold {
+  background: var(--gradient-gold);
+  color: var(--color-primary-white);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primary-blue);
+  border: 2px solid var(--color-primary-blue);
+}
+
+.btn-outline:hover {
+  background: var(--color-primary-blue);
+  color: var(--color-primary-white);
+  transform: translateY(-2px);
+}
+
+.btn-lg {
+  padding: var(--space-5) var(--space-10);
+  font-size: var(--text-lg);
+}
+
+.btn-sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+}
+
+/* ============================================
+   CARDS - 3D Effects & Glassmorphism
+   ============================================ */
+
+.card {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--gradient-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* ============================================
+   ANIMATIONS & KEYFRAMES
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Animation Utility Classes */
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--color-primary-blue);
+}
+
+.text-gold {
+  color: var(--color-gold);
+}
+
+.bg-primary {
+  background: var(--color-primary-blue);
+}
+
+.bg-gold {
+  background: var(--gradient-gold);
+}
+
+.bg-light {
+  background: var(--color-bg-light);
+}
+
+.gradient-text {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablet */
+@media (max-width: 768px) {
+  :root {
+    --text-5xl: 2.5rem;
+    --text-4xl: 2rem;
+    --text-3xl: 1.75rem;
+  }
+  
+  .container, .container-wide {
+    padding: 0 var(--space-4);
+  }
+  
+  .section {
+    padding: var(--space-12) 0;
+  }
+  
+  .section-lg {
+    padding: var(--space-16) 0;
+  }
+  
+  h1 {
+    font-size: var(--text-4xl);
+  }
+  
+  h2 {
+    font-size: var(--text-3xl);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  :root {
+    --text-5xl: 2rem;
+    --text-4xl: 1.75rem;
+    --text-3xl: 1.5rem;
+  }
+  
+  .btn-lg {
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--text-base);
+  }
+  
+  .card {
+    padding: var(--space-6);
+  }
+}
+
+/* ============================================
+   SCROLL BEHAVIOR & PERFORMANCE
+   ============================================ */
+
+/* Smooth scroll with performance optimizations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* GPU Acceleration for transforms */
+.card,
+.btn,
+[class*="animate-"] {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
