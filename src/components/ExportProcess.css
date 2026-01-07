@@ -1,0 +1,95 @@
+.export-process-section {
+    background: var(--color-bg-white);
+}
+
+.export-process-timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-8);
+}
+
+.export-step {
+    position: relative;
+    background: var(--color-bg-white);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: all var(--transition-base);
+    border: 2px solid var(--color-border-light);
+}
+
+.export-step:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-gold);
+}
+
+.export-step-number {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-gold);
+    color: var(--color-primary-white);
+    font-size: var(--text-xl);
+    font-weight: 800;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-gold);
+}
+
+.export-step-icon {
+    width: 80px;
+    height: 80px;
+    margin: var(--space-6) auto var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(10, 77, 140, 0.1) 0%, rgba(30, 107, 184, 0.1) 100%);
+    color: var(--color-primary-blue);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+}
+
+.export-step:hover .export-step-icon {
+    background: var(--gradient-blue);
+    color: var(--color-primary-white);
+    transform: rotate(360deg) scale(1.1);
+}
+
+.export-step-title {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-primary-blue);
+    margin-bottom: var(--space-3);
+}
+
+.export-step-description {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .export-process-timeline {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--space-6);
+    }
+
+    .export-step {
+        padding: var(--space-6);
+    }
+}
+
+@media (max-width: 480px) {
+    .export-process-timeline {
+        grid-template-columns: 1fr;
+    }
+}
