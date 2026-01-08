@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import ProductGrid from '../components/ProductGrid';
+import Certifications from '../components/Certifications';
 import ExportProcess from '../components/ExportProcess';
 import './Home.css';
 
@@ -9,6 +10,7 @@ const Home = () => {
         <div className="home-page">
             <Hero />
             <ProductGrid />
+            <Certifications />
             <ExportProcess />
 
             {/* Why Choose Us Section */}

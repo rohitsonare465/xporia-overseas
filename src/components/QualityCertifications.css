@@ -53,6 +53,33 @@
 .certification-description {
     font-size: var(--text-sm);
     color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+}
+
+.certification-number {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-3);
+    background: var(--color-bg-light);
+    border-radius: var(--radius-lg);
+    border-left: 3px solid var(--color-gold);
+    margin-top: var(--space-4);
+}
+
+.cert-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cert-value {
+    font-size: var(--text-sm);
+    color: var(--color-primary-blue);
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
 }
 
 /* Values Section */

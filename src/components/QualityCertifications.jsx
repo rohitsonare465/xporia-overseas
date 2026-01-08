@@ -26,6 +26,12 @@ const QualityCertifications = () => {
                             </div>
                             <h3 className="certification-name">{cert.name}</h3>
                             <p className="certification-description">{cert.description}</p>
+                            {cert.number && (
+                                <div className="certification-number">
+                                    <span className="cert-label">License No:</span>
+                                    <span className="cert-value">{cert.number}</span>
+                                </div>
+                            )}
                         </div>
                     ))}
                 </div>

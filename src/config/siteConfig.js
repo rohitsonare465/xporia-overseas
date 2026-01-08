@@ -108,31 +108,22 @@ const siteConfig = {
     }
   ],
 
-  // Certifications (PLACEHOLDER)
+  // Certifications
   certifications: [
     {
-      name: "ISO 9001:2015",
-      description: "Quality Management System"
+      name: "Udyam Registration",
+      description: "Government Recognized MSME",
+      number: "UDYAM-MP-23-0246606"
     },
     {
-      name: "IEC Registration",
-      description: "Import Export Code"
+      name: "GST Compliant",
+      description: "Fully Tax Compliant Business",
+      number: "23ADVPZ2719H1ZZ"
     },
     {
-      name: "GST Registered",
-      description: "Goods and Services Tax"
-    },
-    {
-      name: "FSSAI Certified",
-      description: "Food Safety Standards"
-    },
-    {
-      name: "APEDA Registered",
-      description: "Agricultural Export"
-    },
-    {
-      name: "Verified Exporter",
-      description: "Government Recognized"
+      name: "IEC Holder",
+      description: "Import Export Code Certified",
+      number: "ADVPZ2719H"
     }
   ],
 
