@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
+import ProductCard from '../../components/ProductCard';
+import agriculturalProducts from '../../data/agriculturalProducts';
 import './CategoryPage.css';
 import agricultureHero from '../../assets/agriculture-hero.jpg';
 import agriculture1 from '../../assets/agriculture-1.jpg';
@@ -68,53 +70,17 @@ const AgriculturalCommodities = () => {
                 </div>
             </section>
 
-            {/* Product Showcase */}
+            {/* Product Listing Section */}
             <section className="product-showcase">
                 <div className="container">
-                    <h2>Our Agricultural Products</h2>
-                    <div className="product-list">
-                        <div className="product-item">
-                            <h3>Basmati Rice</h3>
-                            <p>
-                                Premium aged basmati rice from Punjab and Haryana. Known for its long grains,
-                                aromatic fragrance, and fluffy texture. Available in various grades.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Wheat</h3>
-                            <p>
-                                High-quality wheat varieties suitable for flour milling and food processing.
-                                Sourced from the wheat belt of northern India.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Pulses</h3>
-                            <p>
-                                Diverse range of pulses including chickpeas, lentils, and pigeon peas. Rich in
-                                protein and essential nutrients, perfect for global markets.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Millets</h3>
-                            <p>
-                                Ancient grains making a modern comeback. Includes pearl millet, finger millet,
-                                and foxtail millet. Gluten-free and highly nutritious.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Oil Seeds</h3>
-                            <p>
-                                Premium oil seeds including sesame, mustard, and groundnut. Ideal for oil
-                                extraction and food processing industries.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Organic Grains</h3>
-                            <p>
-                                Certified organic varieties of rice, wheat, and millets. Grown without synthetic
-                                pesticides or fertilizers for health-conscious markets.
-                            </p>
-                        </div>
+                    <h2>Our Product Range</h2>
+                    <p className="section-subtitle">
+                        Browse our selection of premium agricultural commodities. We offer flexible MOQ and mixed container shipments.
+                    </p>
+                    <div className="products-grid">
+                        {agriculturalProducts.map(product => (
+                            <ProductCard key={product.id} product={product} />
+                        ))}
                     </div>
                 </div>
             </section>

@@ -9,18 +9,18 @@ const siteConfig = {
     description: "Leading import-export company connecting businesses worldwide with premium products and reliable logistics solutions.",
   },
 
-  // Contact Information (PLACEHOLDER - Update when available)
+  // Contact Information
   contact: {
     email: "info@xporiaoverseas.com",
-    phone: "+91 XXXXX XXXXX",
+    phone: "+91 79873 52105",
     address: {
-      street: "Business District",
-      city: "Mumbai",
-      state: "Maharashtra",
+      street: "1049, Sche No. 114/2 part - 2, AB Road",
+      city: "Indore",
+      state: "Madhya Pradesh",
       country: "India",
-      pincode: "400001"
+      pincode: "452010"
     },
-    whatsapp: "+91XXXXXXXXXX", // Update this with actual WhatsApp number
+    whatsapp: "+917987352105", // WhatsApp number without spaces
   },
 
   // Social Media (PLACEHOLDER - Update when available)

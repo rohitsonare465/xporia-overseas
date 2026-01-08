@@ -160,7 +160,24 @@
     font-size: var(--text-4xl);
     font-family: var(--font-display);
     color: var(--color-primary-blue);
+    margin-bottom: var(--space-4);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
     margin-bottom: var(--space-12);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-8);
+    margin-top: var(--space-8);
 }
 
 .product-list {
@@ -244,6 +261,10 @@
     }
 
     .product-list {
+        grid-template-columns: 1fr;
+    }
+
+    .products-grid {
         grid-template-columns: 1fr;
     }
 }

@@ -72,10 +72,11 @@ const ContactForm = () => {
                                     <MapPin size={24} />
                                 </div>
                                 <div>
-                                    <h4>Visit Us</h4>
+                                    <h4>Office Address</h4>
                                     <p>
+                                        {siteConfig.contact.address.street}<br />
                                         {siteConfig.contact.address.city}, {siteConfig.contact.address.state}<br />
-                                        {siteConfig.contact.address.country}
+                                        {siteConfig.contact.address.country} - {siteConfig.contact.address.pincode}
                                     </p>
                                 </div>
                             </div>
@@ -127,7 +128,7 @@ const ContactForm = () => {
                                         name="phone"
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        placeholder="+91 XXXXX XXXXX"
+                                        placeholder="+91 79873 52105"
                                     />
                                 </div>
                             </div>
