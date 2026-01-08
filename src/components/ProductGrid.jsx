@@ -37,8 +37,8 @@ const ProductGrid = () => {
                                     <li key={idx}>{item}</li>
                                 ))}
                             </ul>
-                            <Link to="/products" className="product-card-link">
-                                View Products
+                            <Link to={`/products/${category.slug}`} className="product-card-link">
+                                View All Products
                                 <Icons.ArrowRight size={16} />
                             </Link>
                         </div>

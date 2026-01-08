@@ -30,49 +30,47 @@ const siteConfig = {
     twitter: "https://x.com/xporiaoverseas?s=11",
   },
 
-  // Product Categories (PLACEHOLDER)
+  // Product Categories
   productCategories: [
     {
       id: 1,
-      name: "Agro Commodities",
-      description: "Premium quality agricultural products sourced directly from farmers",
-      icon: "Wheat",
-      items: ["Spices", "Rice", "Pulses", "Oil Seeds"]
+      name: "Indian Spices",
+      slug: "indian-spices",
+      description: "Premium quality traditional Indian spices sourced from finest regions",
+      icon: "Flame",
+      items: ["Turmeric", "Cumin", "Cardamom", "Black Pepper", "Red Chili"]
     },
     {
       id: 2,
-      name: "Industrial Hardware",
-      description: "High-grade industrial components and machinery parts",
-      icon: "Settings",
-      items: ["Fasteners", "Tools", "Machinery Parts", "Safety Equipment"]
+      name: "Agricultural Commodities",
+      slug: "agricultural-commodities",
+      description: "High-quality agricultural products directly from Indian farms",
+      icon: "Wheat",
+      items: ["Basmati Rice", "Wheat", "Pulses", "Millets", "Oil Seeds"]
     },
     {
       id: 3,
-      name: "Textiles & Fabrics",
-      description: "Quality textiles and traditional handloom products",
-      icon: "Shirt",
-      items: ["Cotton Fabrics", "Silk", "Wool", "Synthetic Textiles"]
+      name: "Ayurved & Herbal",
+      slug: "ayurved-herbal",
+      description: "Authentic Ayurvedic and herbal products for wellness",
+      icon: "Leaf",
+      items: ["Ashwagandha", "Tulsi", "Neem", "Moringa", "Herbal Extracts"]
     },
     {
       id: 4,
-      name: "Eco-Friendly Products",
-      description: "Sustainable and environmentally conscious products",
-      icon: "Leaf",
-      items: ["Bamboo Products", "Organic Cotton", "Biodegradable Items", "Natural Fibers"]
+      name: "Essential Oils",
+      slug: "essential-oils",
+      description: "Pure and natural essential oils extracted with care",
+      icon: "Droplet",
+      items: ["Eucalyptus Oil", "Tea Tree Oil", "Lavender Oil", "Peppermint Oil", "Lemongrass Oil"]
     },
     {
       id: 5,
-      name: "Food & Beverages",
-      description: "Export quality food products and beverages",
-      icon: "Coffee",
-      items: ["Tea", "Coffee", "Packaged Foods", "Organic Products"]
-    },
-    {
-      id: 6,
-      name: "Handicrafts & Art",
-      description: "Traditional Indian handicrafts and artistic products",
-      icon: "Palette",
-      items: ["Wooden Crafts", "Metal Art", "Pottery", "Traditional Art"]
+      name: "Indian Textiles",
+      slug: "indian-textiles",
+      description: "Traditional and contemporary Indian textile products",
+      icon: "Shirt",
+      items: ["Cotton Fabrics", "Silk Sarees", "Handloom Products", "Embroidered Textiles", "Organic Cotton"]
     }
   ],
 
