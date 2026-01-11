@@ -42,6 +42,43 @@ const About = () => {
                 </div>
             </section>
 
+            {/* Founder's Message */}
+            <section className="section founder-message-section">
+                <div className="container">
+                    <div className="founder-message-wrapper">
+                        <div className="founder-message-header">
+                            <h2 className="section-title">Message from Our Founders</h2>
+                            <div className="founder-quote-icon">"</div>
+                        </div>
+                        <div className="founder-message-content">
+                            <p className="founder-message-text">
+                                At Xporia, we believe trade is not merely the movement of goods—it is the movement of trust, culture, and human intent across borders. Every product we represent carries a story of origin, effort, and integrity. We exist to ensure that this story reaches the world unchanged and respected.
+                            </p>
+                            <p className="founder-message-text">
+                                We are driven by the belief that long-term success is built on transparency, consistency, and mutual growth. Our vision is to create a global bridge where quality speaks louder than geography and partnerships are valued more than transactions. Xporia is our commitment to meaningful commerce and responsible global exchange.
+                            </p>
+                        </div>
+                        <div className="founder-names">
+                            <div className="founder-name-item">
+                                <div className="founder-initial">V</div>
+                                <div className="founder-details">
+                                    <h4>Vaibhav Arya</h4>
+                                    <p>Co-Founder</p>
+                                </div>
+                            </div>
+                            <div className="founder-separator"></div>
+                            <div className="founder-name-item">
+                                <div className="founder-initial">J</div>
+                                <div className="founder-details">
+                                    <h4>Juveria Zakir</h4>
+                                    <p>Co-Founder</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Mission & Vision */}
             <section className="section mission-vision-section">
                 <div className="container">
