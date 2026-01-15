@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Mail, Phone, MapPin, User } from 'lucide-react';
 import siteConfig from '../config/siteConfig';
+import { sendEmails } from '../services/emailService';
 import './ContactForm.css';
 
 const ContactForm = () => {
@@ -9,6 +10,7 @@ const ContactForm = () => {
         email: '',
         phone: '',
         company: '',
+        address: '',
         message: ''
     });
 
@@ -21,16 +23,30 @@ const ContactForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Simulate form submission
-        setTimeout(() => {
-            alert('Thank you! Your message has been sent. We will contact you soon.');
-            setFormData({ name: '', email: '', phone: '', company: '', message: '' });
+        try {
+            // Send both user confirmation and client notification emails
+            const results = await sendEmails(formData);
+
+            if (results.userEmailSent && results.clientEmailSent) {
+                alert('Thank you! Your message has been sent. We will contact you soon.');
+                setFormData({ name: '', email: '', phone: '', company: '', address: '', message: '' });
+            } else if (results.userEmailSent || results.clientEmailSent) {
+                alert('Your message was partially sent. We will get back to you soon.');
+                console.warn('Partial email delivery:', results.errors);
+            } else {
+                alert('There was an issue sending your message. Please try again or contact us directly.');
+                console.error('Email sending failed:', results.errors);
+            }
+        } catch (error) {
+            alert('There was an error submitting your request. Please try again later.');
+            console.error('Form submission error:', error);
+        } finally {
             setIsSubmitting(false);
-        }, 1500);
+        }
     };
 
     return (
@@ -143,6 +159,21 @@ const ContactForm = () => {
                                     onChange={handleChange}
                                     placeholder="Your Company"
                                 />
+                            </div>
+
+                            <div className="form-group">
+                                <label htmlFor="address">Address/Location</label>
+                                <div className="input-wrapper">
+                                    <MapPin size={18} />
+                                    <input
+                                        type="text"
+                                        id="address"
+                                        name="address"
+                                        value={formData.address}
+                                        onChange={handleChange}
+                                        placeholder="City, State, Country"
+                                    />
+                                </div>
                             </div>
 
                             <div className="form-group">
