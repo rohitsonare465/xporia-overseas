@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import ProductGrid from '../components/ProductGrid';
-import siteConfig from '../config/siteConfig';
 import './Products.css';
 
 const Products = () => {
