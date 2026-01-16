@@ -1,5 +1,13 @@
 import emailjs from '@emailjs/browser';
 
+// Debug: Check if environment variables are loaded
+console.log('🔍 EmailJS Config Check:');
+console.log('Service ID:', process.env.REACT_APP_EMAILJS_SERVICE_ID);
+console.log('User Template:', process.env.REACT_APP_EMAILJS_TEMPLATE_USER);
+console.log('Client Template:', process.env.REACT_APP_EMAILJS_TEMPLATE_CLIENT);
+console.log('Public Key:', process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+
+
 // Initialize EmailJS with your public key
 const initEmailJS = () => {
     const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
@@ -27,7 +35,9 @@ export const sendUserConfirmation = async (formData) => {
     }
 
     const templateParams = {
-        to_email: formData.email,
+        // EmailJS template expects `email` (user address) and optional name fields
+        email: formData.email,
+        to_email: formData.email, // keep for backward compatibility if template uses this key
         to_name: formData.name,
         company_name: 'XPORIA OVERSEAS',
     };
