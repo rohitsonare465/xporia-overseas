@@ -1,14 +1,13 @@
-import { useRequestQuote } from '../context/RequestQuoteContext';
+// import { useRequestQuote } from '../context/RequestQuoteContext';
 import { motion } from 'framer-motion';
 import { Globe, ShieldCheck, Award } from 'lucide-react';
-import { Link } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import siteConfig from '../config/siteConfig';
 import heroCardImg from '../assets/hero-vertical-card.png'; // Updated asset
 import './Hero.css';
 
 const Hero = () => {
-    const { openQuoteModal } = useRequestQuote();
+    // const { openQuoteModal } = useRequestQuote();
 
     return (
         <section className="hero">

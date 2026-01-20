@@ -1,5 +1,5 @@
 import React from 'react';
-import { Microscope, ClipboardCheck, Award, FileCheck, ShieldCheck, Leaf } from 'lucide-react';
+import { Microscope, ClipboardCheck, FileCheck, ShieldCheck, Leaf } from 'lucide-react';
 import QualityCertifications from '../components/QualityCertifications';
 import './Quality.css';
 
