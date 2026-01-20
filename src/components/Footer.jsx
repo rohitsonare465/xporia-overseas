@@ -70,12 +70,22 @@ const Footer = () => {
                     <div className="footer-column">
                         <h4 className="footer-title">Our Products</h4>
                         <nav className="footer-links">
-                            <Link to="/products">Agro Commodities</Link>
-                            <Link to="/products">Industrial Hardware</Link>
-                            <Link to="/products">Textiles & Fabrics</Link>
-                            <Link to="/products">Eco-Friendly Products</Link>
-                            <Link to="/products">Food & Beverages</Link>
-                            <Link to="/products">Handicrafts & Art</Link>
+                            {siteConfig.productCategories.map((category) => (
+                                category.isInquiryOnly ? (
+                                    <a
+                                        key={category.id}
+                                        href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hi, I'm interested in ${category.name}`)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {category.name}
+                                    </a>
+                                ) : (
+                                    <Link key={category.id} to={`/products/${category.slug}`}>
+                                        {category.name}
+                                    </Link>
+                                )
+                            ))}
                         </nav>
                     </div>
 

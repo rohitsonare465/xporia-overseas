@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import siteConfig from '../config/siteConfig';
 import './ProductModal.css';
 
 const ProductModal = ({ product, isOpen, onClose }) => {
@@ -114,7 +115,7 @@ const ProductModal = ({ product, isOpen, onClose }) => {
                                 {/* Contact CTA */}
                                 <div className="modal-cta">
                                     <a
-                                        href={`https://wa.me/919755554650?text=Hi, I'm interested in ${product.name}`}
+                                        href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hi, I'm interested in ${product.name}`)}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="modal-contact-btn"

@@ -1,4 +1,4 @@
-import React from 'react';
+import { useRequestQuote } from '../context/RequestQuoteContext';
 import { motion } from 'framer-motion';
 import { Globe, ShieldCheck, Award } from 'lucide-react';
 import { Link } from 'react-scroll';
@@ -6,6 +6,8 @@ import heroCardImg from '../assets/hero-vertical-card.png'; // Updated asset
 import './Hero.css';
 
 const Hero = () => {
+    const { openQuoteModal } = useRequestQuote();
+
     return (
         <section className="hero">
             <div className="hero-background-pattern"></div>
@@ -51,9 +53,9 @@ const Hero = () => {
                         <Link to="products" smooth={true} duration={500} className="btn-hero-primary">
                             Explore Our Range
                         </Link>
-                        <Link to="contact" smooth={true} duration={500} className="btn-hero-outline">
+                        <button onClick={() => openQuoteModal()} className="btn-hero-outline">
                             Request Catalog
-                        </Link>
+                        </button>
                     </motion.div>
 
                     <motion.div

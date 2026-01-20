@@ -4,7 +4,11 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
+import { useRequestQuote } from '../context/RequestQuoteContext';
+import './Navbar.css';
+
 const Navbar = () => {
+    const { openQuoteModal } = useRequestQuote();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const location = useLocation();
@@ -69,9 +73,9 @@ const Navbar = () => {
 
                 {/* CTA Button */}
                 <div className="navbar-actions">
-                    <Link to="/contact" className="btn btn-gold btn-sm navbar-cta">
+                    <button onClick={() => openQuoteModal()} className="btn btn-gold btn-sm navbar-cta">
                         Request Quote
-                    </Link>
+                    </button>
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -104,13 +108,16 @@ const Navbar = () => {
                                 {link.label}
                             </Link>
                         ))}
-                        <Link
-                            to="/contact"
+                        <button
                             className="btn btn-gold btn-sm"
-                            onClick={() => setIsMobileMenuOpen(false)}
+                            onClick={() => {
+                                setIsMobileMenuOpen(false);
+                                openQuoteModal();
+                            }}
+                            style={{ width: '100%', marginTop: '1rem' }}
                         >
                             Request Quote
-                        </Link>
+                        </button>
                     </motion.div>
                 )}
             </AnimatePresence>

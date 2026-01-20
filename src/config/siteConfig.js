@@ -71,6 +71,15 @@ const siteConfig = {
       description: "Traditional and contemporary Indian textile products",
       icon: "Shirt",
       items: ["Cotton Fabrics", "Silk Sarees", "Handloom Products", "Embroidered Textiles", "Organic Cotton"]
+    },
+    {
+      id: 6,
+      name: "On-Demand Products",
+      slug: "on-demand-products",
+      description: "Custom sourcing for specialized industrial and agricultural requirements",
+      icon: "Package",
+      isInquiryOnly: true,
+      items: ["Organic & Bio Fertilisers", "Bio-degradable Products", "Plywood’s", "MDF Boards", "Raw Materials"]
     }
   ],
 

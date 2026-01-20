@@ -85,10 +85,21 @@ const ProductGrid = () => {
                                         <li className="more-items">+{category.items.length - 3} more</li>
                                     )}
                                 </ul>
-                                <Link to={`/products/${category.slug}`} className="product-card-link">
-                                    <span>View Collection</span>
-                                    <Icons.ArrowRight size={16} />
-                                </Link>
+                                {category.isInquiryOnly ? (
+                                    <button
+                                        onClick={() => window.open(`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hi, I'm interested in ${category.name}`)}`, '_blank')}
+                                        className="product-card-link"
+                                        style={{ width: '100%', border: 'none', background: 'transparent', cursor: 'pointer', textAlign: 'left', padding: 0 }}
+                                    >
+                                        <span>Enquire Now</span>
+                                        <Icons.MessageCircle size={16} />
+                                    </button>
+                                ) : (
+                                    <Link to={`/products/${category.slug}`} className="product-card-link">
+                                        <span>View Collection</span>
+                                        <Icons.ArrowRight size={16} />
+                                    </Link>
+                                )}
                             </div>
                         </motion.div>
                     ))}
