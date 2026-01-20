@@ -28,6 +28,14 @@ import pineOilImg from '../../assets/products/pine-oil.jpg';
 import cypressOilImg from '../../assets/products/cypress-oil.jpg';
 import frankincenseOilImg from '../../assets/products/frankincense-oil.jpg';
 import myrrhOilImg from '../../assets/products/myrrh-oil.jpg';
+import lemongrassOilImg from '../../assets/products/lemongrass-oil.jpg';
+import vetiverOilImg from '../../assets/products/vetiver-oil.jpg';
+import palmarosaOilImg from '../../assets/products/palmarosa-oil.jpg';
+import citronellaOilImg from '../../assets/products/citronella-oil.jpg';
+import patchouliOilImg from '../../assets/products/patchouli-oil.jpg';
+import neemOilImg from '../../assets/products/neem-oil.jpg';
+import bergamotOilImg from '../../assets/products/bergamot-oil.jpg';
+import eucalyptusOilImg from '../../assets/products/eucalyptus-oil.jpg';
 
 const EssentialOils = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -369,6 +377,134 @@ const EssentialOils = () => {
                 'Shelf Life': '36 months',
                 'Testing': 'GC-MS Certified',
                 'Grade': 'Premium Therapeutic'
+            }
+        },
+        {
+            id: 'oil-022',
+            name: 'Lemongrass Oil',
+            category: 'Essential Oils',
+            image: lemongrassOilImg,
+            specifications: {
+                'Botanical Name': 'Cymbopogon flexuosus',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Citral Content': '70-85%',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-023',
+            name: 'Vetiver (Khus) Oil',
+            category: 'Essential Oils',
+            image: vetiverOilImg,
+            specifications: {
+                'Botanical Name': 'Chrysopogon zizanioides',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '36 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Premium Therapeutic'
+            }
+        },
+        {
+            id: 'oil-024',
+            name: 'Palmarosa Oil',
+            category: 'Essential Oils',
+            image: palmarosaOilImg,
+            specifications: {
+                'Botanical Name': 'Cymbopogon martinii',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Geraniol Content': '75-85%',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-025',
+            name: 'Citronella Oil',
+            category: 'Essential Oils',
+            image: citronellaOilImg,
+            specifications: {
+                'Botanical Name': 'Cymbopogon winterianus',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Application': 'Repellent/Aromatherapy',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Commercial/Therapeutic'
+            }
+        },
+        {
+            id: 'oil-026',
+            name: 'Patchouli Oil',
+            category: 'Essential Oils',
+            image: patchouliOilImg,
+            specifications: {
+                'Botanical Name': 'Pogostemon cablin',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '36 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Premium Therapeutic'
+            }
+        },
+        {
+            id: 'oil-027',
+            name: 'Neem Oil',
+            category: 'Essential Oils',
+            image: neemOilImg,
+            specifications: {
+                'Botanical Name': 'Azadirachta indica',
+                'Extraction Method': 'Cold Pressed',
+                'Purity': '100% Pure',
+                'Azadirachtin': '1500-3000 PPM',
+                'Packaging': '100ml/250ml/500ml/1L bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'Lab Tested',
+                'Grade': 'Pharmaceutical/Cosmetic'
+            }
+        },
+        {
+            id: 'oil-028',
+            name: 'Bergamot Oil',
+            category: 'Essential Oils',
+            image: bergamotOilImg,
+            specifications: {
+                'Botanical Name': 'Citrus bergamia',
+                'Extraction Method': 'Cold Pressed',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '12 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-029',
+            name: 'Eucalyptus Oil',
+            category: 'Essential Oils',
+            image: eucalyptusOilImg,
+            specifications: {
+                'Botanical Name': 'Eucalyptus globulus',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Cineole Content': '60-80%',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
             }
         }
     ];
