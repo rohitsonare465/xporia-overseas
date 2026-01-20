@@ -20,8 +20,8 @@ const About = () => {
             <section className="section">
                 <div className="container">
                     <div className="about-content">
-                        <div className="about-text">
-                            <h2>Our Story</h2>
+                        <div className="about-text-container">
+                            <h2 className="section-title">Our Story</h2>
                             <p>
                                 Founded with a vision to connect businesses across borders, Xporia Overseas has grown
                                 into a trusted name in international trade. We specialize in sourcing and exporting
@@ -37,6 +37,14 @@ const About = () => {
                                 robust network of suppliers and logistics partners, we ensure that every shipment
                                 meets the highest standards of quality and arrives on time, every time.
                             </p>
+                        </div>
+                        <div className="about-images-container">
+                            <div className="about-image-wrapper image-1">
+                                <img src={require('../assets/images/about-global-trade.png')} alt="Global Trade Operations" />
+                            </div>
+                            <div className="about-image-wrapper image-2">
+                                <img src={require('../assets/images/about-quality-assurance.png')} alt="Quality Assurance" />
+                            </div>
                         </div>
                     </div>
                 </div>

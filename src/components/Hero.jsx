@@ -2,6 +2,8 @@ import { useRequestQuote } from '../context/RequestQuoteContext';
 import { motion } from 'framer-motion';
 import { Globe, ShieldCheck, Award } from 'lucide-react';
 import { Link } from 'react-scroll';
+import { Link as RouterLink } from 'react-router-dom';
+import siteConfig from '../config/siteConfig';
 import heroCardImg from '../assets/hero-vertical-card.png'; // Updated asset
 import './Hero.css';
 
@@ -50,10 +52,13 @@ const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.6 }}
                         className="hero-actions"
                     >
-                        <Link to="products" smooth={true} duration={500} className="btn-hero-primary">
+                        <RouterLink to="/products" className="btn-hero-primary">
                             Explore Our Range
-                        </Link>
-                        <button onClick={() => openQuoteModal()} className="btn-hero-outline">
+                        </RouterLink>
+                        <button
+                            onClick={() => window.open(`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent("Hi, I'm interested in receiving your product catalog.")}`, '_blank')}
+                            className="btn-hero-outline"
+                        >
                             Request Catalog
                         </button>
                     </motion.div>

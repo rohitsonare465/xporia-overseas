@@ -31,8 +31,48 @@ const Products = () => {
                 </div>
             </section>
 
+            {/* Product Highlights */}
+            <section className="section products-highlights-section">
+                <div className="container">
+                    <div className="products-highlights-content">
+                        <div className="products-highlights-text">
+                            <h2 className="section-title">Premium Quality, Infinite Variety</h2>
+                            <p>
+                                At Xporia Overseas, we take pride in offering an extensive catalog of top-tier products sourced
+                                directly from the finest producers in India. From aromatic spices to durable textiles,
+                                our selection is curated to meet global standards.
+                            </p>
+                            <div className="highlight-features">
+                                <div className="highlight-feature">
+                                    <div className="feature-icon">✨</div>
+                                    <div>
+                                        <h4>Curated Selection</h4>
+                                        <p>Handpicked products ensuring authentic quality.</p>
+                                    </div>
+                                </div>
+                                <div className="highlight-feature">
+                                    <div className="feature-icon">📦</div>
+                                    <div>
+                                        <h4>Secure Packaging</h4>
+                                        <p>Export-ready packaging for safe global transit.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="products-highlights-images">
+                            <div className="highlight-image-wrapper img-1">
+                                <img src={require('../assets/images/products-assortment.png')} alt="Premium Product Assortment" />
+                            </div>
+                            <div className="highlight-image-wrapper img-2">
+                                <img src={require('../assets/images/products-packaging.png')} alt="Secure Export Packaging" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             {/* Product Categories */}
-            <ProductGrid />
+            <ProductGrid searchQuery={searchQuery} />
 
             {/* Call to Action */}
             <section className="section products-cta-section">
