@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, ShieldCheck, Award } from 'lucide-react';
+import { Globe, ShieldCheck, Award } from 'lucide-react';
 import { Link } from 'react-scroll';
 import heroCardImg from '../assets/hero-vertical-card.png'; // Updated asset
 import './Hero.css';
