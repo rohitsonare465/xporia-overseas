@@ -1,12 +1,274 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import ProductModal from '../../components/ProductModal';
 import './CategoryPage.css';
 import ayurvedHero from '../../assets/ayurved-hero.jpg';
 import ayurved1 from '../../assets/ayurved-1.jpg';
 import ayurved2 from '../../assets/ayurved-2.jpg';
+import ashwagandhaImg from '../../assets/products/ashwagandha.jpg';
+import shatavariImg from '../../assets/products/shatavari.jpg';
+import amlaImg from '../../assets/products/amla.jpg';
+import moringaPowderImg from '../../assets/products/moringa-powder.jpg';
+import giloyImg from '../../assets/products/giloy.jpg';
+import shilajitImg from '../../assets/products/shilajit.jpg';
+import brahmiImg from '../../assets/products/brahmi.jpg';
+import mulethiImg from '../../assets/products/mulethi.jpg';
+import tulsiImg from '../../assets/products/tulsi.jpg';
+import neemImg from '../../assets/products/neem.jpg';
+import triphalaImg from '../../assets/products/triphala.jpg';
+import hingImg from '../../assets/products/hing.jpg';
+import bhringrajImg from '../../assets/products/bhringraj.jpg';
 
 const AyurvedHerbal = () => {
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Ayurvedic & Herbal Products
+    const ayurvedProducts = [
+        {
+            id: 'ayur-001',
+            name: 'Ashwagandha',
+            category: 'Ayurved & Herbal',
+            image: ashwagandhaImg,
+            specifications: {
+                'Botanical Name': 'Withania somnifera',
+                'Part Used': 'Roots',
+                'Form': 'Powder/Extract',
+                'Active Compound': 'Withanolides 2.5-5%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '24 months',
+                'Certification': 'Organic Available',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'ayur-002',
+            name: 'Shatavari',
+            category: 'Ayurved & Herbal',
+            image: shatavariImg,
+            specifications: {
+                'Botanical Name': 'Asparagus racemosus',
+                'Part Used': 'Roots',
+                'Form': 'Powder/Extract',
+                'Moisture': 'Max 10%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '24 months',
+                'Benefits': 'Women\'s Health Support',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'ayur-003',
+            name: 'Amla (Indian Gooseberry)',
+            category: 'Ayurved & Herbal',
+            image: amlaImg,
+            specifications: {
+                'Botanical Name': 'Phyllanthus emblica',
+                'Part Used': 'Fruit',
+                'Form': 'Powder/Extract/Dried',
+                'Vitamin C': 'High Content',
+                'Packaging': '25kg bags',
+                'Shelf Life': '18 months',
+                'Type': 'Organic & Conventional',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'ayur-004',
+            name: 'Moringa Powder',
+            category: 'Ayurved & Herbal',
+            image: moringaPowderImg,
+            specifications: {
+                'Botanical Name': 'Moringa oleifera',
+                'Part Used': 'Leaves',
+                'Form': 'Fine Powder',
+                'Protein Content': '25-30%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '24 months',
+                'Certification': 'Organic Available',
+                'Grade': 'Premium Superfood'
+            }
+        },
+        {
+            id: 'ayur-005',
+            name: 'Giloy',
+            category: 'Ayurved & Herbal',
+            image: giloyImg,
+            specifications: {
+                'Botanical Name': 'Tinospora cordifolia',
+                'Part Used': 'Stem',
+                'Form': 'Powder/Extract',
+                'Moisture': 'Max 10%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '24 months',
+                'Benefits': 'Immunity Booster',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'ayur-006',
+            name: 'Shilajit',
+            category: 'Ayurved & Herbal',
+            image: shilajitImg,
+            specifications: {
+                'Type': 'Himalayan Mineral Resin',
+                'Form': 'Resin/Powder',
+                'Fulvic Acid': '60-80%',
+                'Purity': 'Premium Grade',
+                'Packaging': '1kg/5kg containers',
+                'Shelf Life': '36 months',
+                'Origin': 'Himalayan Mountains',
+                'Grade': 'Gold Grade'
+            }
+        },
+        {
+            id: 'ayur-007',
+            name: 'Brahmi',
+            category: 'Ayurved & Herbal',
+            image: brahmiImg,
+            specifications: {
+                'Botanical Name': 'Bacopa monnieri',
+                'Part Used': 'Whole Plant',
+                'Form': 'Powder/Extract',
+                'Active Compound': 'Bacosides 20-50%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '24 months',
+                'Benefits': 'Memory & Cognitive Support',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'ayur-008',
+            name: 'Mulethi (Licorice)',
+            category: 'Ayurved & Herbal',
+            image: mulethiImg,
+            specifications: {
+                'Botanical Name': 'Glycyrrhiza glabra',
+                'Part Used': 'Roots',
+                'Form': 'Powder/Sticks',
+                'Glycyrrhizin': '3-5%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '24 months',
+                'Benefits': 'Respiratory & Digestive Support',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'ayur-009',
+            name: 'Tulsi (Holy Basil)',
+            category: 'Ayurved & Herbal',
+            image: tulsiImg,
+            specifications: {
+                'Botanical Name': 'Ocimum sanctum',
+                'Part Used': 'Leaves',
+                'Form': 'Dried Leaves/Powder',
+                'Moisture': 'Max 10%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '18 months',
+                'Benefits': 'Immunity & Stress Relief',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'ayur-010',
+            name: 'Neem',
+            category: 'Ayurved & Herbal',
+            image: neemImg,
+            specifications: {
+                'Botanical Name': 'Azadirachta indica',
+                'Part Used': 'Leaves/Seeds',
+                'Form': 'Powder/Oil',
+                'Moisture': 'Max 10%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '24 months',
+                'Benefits': 'Antibacterial & Skin Health',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'ayur-011',
+            name: 'Triphala',
+            category: 'Ayurved & Herbal',
+            image: triphalaImg,
+            specifications: {
+                'Composition': 'Amla, Haritaki, Bibhitaki',
+                'Form': 'Powder/Tablets',
+                'Ratio': '1:1:1',
+                'Moisture': 'Max 10%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '24 months',
+                'Benefits': 'Digestive & Detox Support',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'ayur-012',
+            name: 'Hing (Asafoetida)',
+            category: 'Ayurved & Herbal',
+            image: hingImg,
+            specifications: {
+                'Botanical Name': 'Ferula assa-foetida',
+                'Part Used': 'Resin',
+                'Form': 'Powder/Resin',
+                'Purity': '95-99%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '24 months',
+                'Benefits': 'Digestive Aid & Flavoring',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'ayur-013',
+            name: 'Bhringraj',
+            category: 'Ayurved & Herbal',
+            image: bhringrajImg,
+            specifications: {
+                'Botanical Name': 'Eclipta alba',
+                'Part Used': 'Whole Plant',
+                'Form': 'Powder/Oil',
+                'Moisture': 'Max 10%',
+                'Packaging': '25kg bags',
+                'Shelf Life': '24 months',
+                'Benefits': 'Hair Growth & Liver Support',
+                'Grade': 'Premium Quality'
+            }
+        }
+    ];
+
+    const handleViewSpecifications = (product) => {
+        setSelectedProduct(product);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedProduct(null);
+    };
+
+    // Animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15
+            }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.5
+            }
+        }
+    };
+
     return (
         <div className="category-page">
             {/* Hero Section */}
@@ -72,50 +334,43 @@ const AyurvedHerbal = () => {
             <section className="product-showcase">
                 <div className="container">
                     <h2>Our Ayurvedic & Herbal Range</h2>
-                    <div className="product-list">
-                        <div className="product-item">
-                            <h3>Ashwagandha</h3>
-                            <p>
-                                Premium Withania somnifera roots and powder. Known for its adaptogenic properties,
-                                stress relief, and energy enhancement. Available in organic and conventional grades.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Tulsi (Holy Basil)</h3>
-                            <p>
-                                Sacred herb of India with powerful antioxidant properties. Available as dried leaves,
-                                powder, and extracts. Perfect for teas and supplements.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Neem</h3>
-                            <p>
-                                Azadirachta indica leaves, powder, and oil. Renowned for its antibacterial and
-                                purifying properties. Used in cosmetics and wellness products.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Moringa</h3>
-                            <p>
-                                Nutrient-dense superfood from Moringa oleifera. Available as leaf powder, seeds,
-                                and oil. Rich in vitamins, minerals, and antioxidants.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Herbal Extracts</h3>
-                            <p>
-                                Concentrated extracts of various Ayurvedic herbs including Brahmi, Triphala, and
-                                Amla. Standardized for active compounds and therapeutic efficacy.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Turmeric Curcumin</h3>
-                            <p>
-                                High-curcumin turmeric extracts and powders. Anti-inflammatory superfood with
-                                global demand. Available in various potency levels.
-                            </p>
-                        </div>
-                    </div>
+                    <motion.div
+                        className="products-grid-category"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {ayurvedProducts.map((product) => (
+                            <motion.div
+                                key={product.id}
+                                className="product-card-category"
+                                variants={cardVariants}
+                                whileHover={{ y: -8 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <div className="product-image-wrapper-category">
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        className="product-image-category"
+                                    />
+                                </div>
+                                <div className="product-info-category">
+                                    <span className="product-category-badge-small">
+                                        {product.category}
+                                    </span>
+                                    <h3 className="product-name-category">{product.name}</h3>
+                                    <button
+                                        className="view-specs-btn-category"
+                                        onClick={() => handleViewSpecifications(product)}
+                                    >
+                                        View Specifications
+                                    </button>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 </div>
             </section>
 
@@ -134,6 +389,15 @@ const AyurvedHerbal = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Product Modal */}
+            {isModalOpen && selectedProduct && (
+                <ProductModal
+                    product={selectedProduct}
+                    isOpen={isModalOpen}
+                    onClose={handleCloseModal}
+                />
+            )}
         </div>
     );
 };

@@ -1,12 +1,410 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import ProductModal from '../../components/ProductModal';
 import './CategoryPage.css';
 import oilsHero from '../../assets/oils-hero.jpg';
 import oils1 from '../../assets/oils-1.jpg';
 import oils2 from '../../assets/oils-2.jpg';
+import roseOilImg from '../../assets/products/rose-oil.jpg';
+import jasmineOilImg from '../../assets/products/jasmine-oil.jpg';
+import lavenderOilImg from '../../assets/products/lavender-oil.jpg';
+import peppermintOilImg from '../../assets/products/peppermint-oil.jpg';
+import spearmintOilImg from '../../assets/products/spearmint-oil.jpg';
+import teaTreeOilImg from '../../assets/products/tea-tree-oil.jpg';
+import basilOilImg from '../../assets/products/basil-oil.jpg';
+import rosemaryOilImg from '../../assets/products/rosemary-oil.jpg';
+import thymeOilImg from '../../assets/products/thyme-oil.jpg';
+import cloveOilImg from '../../assets/products/clove-oil.jpg';
+import cinnamonOilImg from '../../assets/products/cinnamon-oil.jpg';
+import blackPepperOilImg from '../../assets/products/black-pepper-oil.jpg';
+import cardamomOilImg from '../../assets/products/cardamom-oil.jpg';
+import nutmegOilImg from '../../assets/products/nutmeg-oil.jpg';
+import gingerOilImg from '../../assets/products/ginger-oil.jpg';
+import sandalwoodOilImg from '../../assets/products/sandalwood-oil.jpg';
+import cedarwoodOilImg from '../../assets/products/cedarwood-oil.jpg';
+import pineOilImg from '../../assets/products/pine-oil.jpg';
+import cypressOilImg from '../../assets/products/cypress-oil.jpg';
+import frankincenseOilImg from '../../assets/products/frankincense-oil.jpg';
+import myrrhOilImg from '../../assets/products/myrrh-oil.jpg';
 
 const EssentialOils = () => {
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Essential Oil Products
+    const essentialOilProducts = [
+        {
+            id: 'oil-001',
+            name: 'Rose Oil',
+            category: 'Essential Oils',
+            image: roseOilImg,
+            specifications: {
+                'Botanical Name': 'Rosa damascena',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-002',
+            name: 'Jasmine Oil',
+            category: 'Essential Oils',
+            image: jasmineOilImg,
+            specifications: {
+                'Botanical Name': 'Jasminum grandiflorum',
+                'Extraction Method': 'Solvent Extraction',
+                'Purity': '100% Pure Absolute',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '36 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Premium Absolute'
+            }
+        },
+        {
+            id: 'oil-003',
+            name: 'Lavender Oil',
+            category: 'Essential Oils',
+            image: lavenderOilImg,
+            specifications: {
+                'Botanical Name': 'Lavandula angustifolia',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-004',
+            name: 'Peppermint Oil',
+            category: 'Essential Oils',
+            image: peppermintOilImg,
+            specifications: {
+                'Botanical Name': 'Mentha piperita',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Menthol Content': '40-50%',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-005',
+            name: 'Spearmint Oil',
+            category: 'Essential Oils',
+            image: spearmintOilImg,
+            specifications: {
+                'Botanical Name': 'Mentha spicata',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Carvone Content': '50-70%',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-006',
+            name: 'Tea Tree Oil',
+            category: 'Essential Oils',
+            image: teaTreeOilImg,
+            specifications: {
+                'Botanical Name': 'Melaleuca alternifolia',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Terpinen-4-ol': '30-48%',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-007',
+            name: 'Basil Oil',
+            category: 'Essential Oils',
+            image: basilOilImg,
+            specifications: {
+                'Botanical Name': 'Ocimum basilicum',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-008',
+            name: 'Rosemary Oil',
+            category: 'Essential Oils',
+            image: rosemaryOilImg,
+            specifications: {
+                'Botanical Name': 'Rosmarinus officinalis',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-009',
+            name: 'Thyme Oil',
+            category: 'Essential Oils',
+            image: thymeOilImg,
+            specifications: {
+                'Botanical Name': 'Thymus vulgaris',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Thymol Content': '30-50%',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-010',
+            name: 'Clove Oil',
+            category: 'Essential Oils',
+            image: cloveOilImg,
+            specifications: {
+                'Botanical Name': 'Syzygium aromaticum',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Eugenol Content': '75-85%',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '36 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-011',
+            name: 'Cinnamon Oil',
+            category: 'Essential Oils',
+            image: cinnamonOilImg,
+            specifications: {
+                'Botanical Name': 'Cinnamomum verum',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Cinnamaldehyde': '60-75%',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '36 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-012',
+            name: 'Black Pepper Oil',
+            category: 'Essential Oils',
+            image: blackPepperOilImg,
+            specifications: {
+                'Botanical Name': 'Piper nigrum',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-013',
+            name: 'Cardamom Oil',
+            category: 'Essential Oils',
+            image: cardamomOilImg,
+            specifications: {
+                'Botanical Name': 'Elettaria cardamomum',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-014',
+            name: 'Nutmeg Oil',
+            category: 'Essential Oils',
+            image: nutmegOilImg,
+            specifications: {
+                'Botanical Name': 'Myristica fragrans',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-015',
+            name: 'Ginger Oil',
+            category: 'Essential Oils',
+            image: gingerOilImg,
+            specifications: {
+                'Botanical Name': 'Zingiber officinale',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-016',
+            name: 'Sandalwood Oil',
+            category: 'Essential Oils',
+            image: sandalwoodOilImg,
+            specifications: {
+                'Botanical Name': 'Santalum album',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '36 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Premium Therapeutic'
+            }
+        },
+        {
+            id: 'oil-017',
+            name: 'Cedarwood Oil',
+            category: 'Essential Oils',
+            image: cedarwoodOilImg,
+            specifications: {
+                'Botanical Name': 'Cedrus atlantica',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '36 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-018',
+            name: 'Pine Oil',
+            category: 'Essential Oils',
+            image: pineOilImg,
+            specifications: {
+                'Botanical Name': 'Pinus sylvestris',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-019',
+            name: 'Cypress Oil',
+            category: 'Essential Oils',
+            image: cypressOilImg,
+            specifications: {
+                'Botanical Name': 'Cupressus sempervirens',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '24 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Therapeutic Grade'
+            }
+        },
+        {
+            id: 'oil-020',
+            name: 'Frankincense Oil',
+            category: 'Essential Oils',
+            image: frankincenseOilImg,
+            specifications: {
+                'Botanical Name': 'Boswellia serrata',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '36 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Premium Therapeutic'
+            }
+        },
+        {
+            id: 'oil-021',
+            name: 'Myrrh Oil',
+            category: 'Essential Oils',
+            image: myrrhOilImg,
+            specifications: {
+                'Botanical Name': 'Commiphora myrrha',
+                'Extraction Method': 'Steam Distillation',
+                'Purity': '100% Pure',
+                'Origin': 'India',
+                'Packaging': '10ml/25ml/100ml bottles',
+                'Shelf Life': '36 months',
+                'Testing': 'GC-MS Certified',
+                'Grade': 'Premium Therapeutic'
+            }
+        }
+    ];
+
+    const handleViewSpecifications = (product) => {
+        setSelectedProduct(product);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedProduct(null);
+    };
+
+    // Animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15
+            }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.5
+            }
+        }
+    };
+
     return (
         <div className="category-page">
             {/* Hero Section */}
@@ -72,50 +470,43 @@ const EssentialOils = () => {
             <section className="product-showcase">
                 <div className="container">
                     <h2>Our Essential Oil Collection</h2>
-                    <div className="product-list">
-                        <div className="product-item">
-                            <h3>Eucalyptus Oil</h3>
-                            <p>
-                                Pure eucalyptus globulus oil with high cineole content. Known for respiratory
-                                support and refreshing aroma. Ideal for aromatherapy and pharmaceutical use.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Tea Tree Oil</h3>
-                            <p>
-                                Melaleuca alternifolia oil with powerful antimicrobial properties. Perfect for
-                                skincare, cosmetics, and natural cleaning products.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Lavender Oil</h3>
-                            <p>
-                                Calming lavender essential oil for relaxation and sleep support. High-quality
-                                oil suitable for aromatherapy, cosmetics, and personal care products.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Peppermint Oil</h3>
-                            <p>
-                                Refreshing Mentha piperita oil with high menthol content. Used in aromatherapy,
-                                food flavoring, and pharmaceutical applications.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Lemongrass Oil</h3>
-                            <p>
-                                Citrus-scented Cymbopogon oil with uplifting properties. Popular in perfumery,
-                                aromatherapy, and natural insect repellents.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Sandalwood Oil</h3>
-                            <p>
-                                Premium Santalum album oil with rich, woody aroma. Highly valued in perfumery,
-                                meditation, and luxury cosmetics. Sustainably sourced.
-                            </p>
-                        </div>
-                    </div>
+                    <motion.div
+                        className="products-grid-category"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {essentialOilProducts.map((product) => (
+                            <motion.div
+                                key={product.id}
+                                className="product-card-category"
+                                variants={cardVariants}
+                                whileHover={{ y: -8 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <div className="product-image-wrapper-category">
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        className="product-image-category"
+                                    />
+                                </div>
+                                <div className="product-info-category">
+                                    <span className="product-category-badge-small">
+                                        {product.category}
+                                    </span>
+                                    <h3 className="product-name-category">{product.name}</h3>
+                                    <button
+                                        className="view-specs-btn-category"
+                                        onClick={() => handleViewSpecifications(product)}
+                                    >
+                                        View Specifications
+                                    </button>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 </div>
             </section>
 
@@ -134,6 +525,15 @@ const EssentialOils = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Product Modal */}
+            {isModalOpen && selectedProduct && (
+                <ProductModal
+                    product={selectedProduct}
+                    isOpen={isModalOpen}
+                    onClose={handleCloseModal}
+                />
+            )}
         </div>
     );
 };

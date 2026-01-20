@@ -1,12 +1,138 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import ProductModal from '../../components/ProductModal';
 import './CategoryPage.css';
 import textilesHero from '../../assets/textiles-hero.jpg';
 import textiles1 from '../../assets/textiles-1.jpg';
 import textiles2 from '../../assets/textiles-2.jpg';
+import organicCottonImg from '../../assets/products/organic-cotton.jpg';
+import bambooFabricImg from '../../assets/products/bamboo-fabric.jpg';
+import recycledPolyesterImg from '../../assets/products/recycled-polyester.jpg';
+import woolImg from '../../assets/products/wool.jpg';
+import juteImg from '../../assets/products/jute-fabric.jpg';
 
 const IndianTextiles = () => {
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Textile Products
+    const textileProducts = [
+        {
+            id: 'textile-001',
+            name: 'Organic Cotton',
+            category: 'Indian Textiles',
+            image: organicCottonImg,
+            specifications: {
+                'Material': '100% Organic Cotton',
+                'Certification': 'GOTS Certified',
+                'Thread Count': '200-400 TC',
+                'Width': '44-60 inches',
+                'Weight': '100-200 GSM',
+                'Packaging': 'Rolls/Bales',
+                'MOQ': '500 meters',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'textile-002',
+            name: 'Bamboo Fabric',
+            category: 'Indian Textiles',
+            image: bambooFabricImg,
+            specifications: {
+                'Material': '100% Bamboo Fiber',
+                'Type': 'Bamboo Viscose',
+                'Width': '58-60 inches',
+                'Weight': '150-250 GSM',
+                'Features': 'Antibacterial, Breathable',
+                'Packaging': 'Rolls',
+                'MOQ': '500 meters',
+                'Grade': 'Premium Eco-Friendly'
+            }
+        },
+        {
+            id: 'textile-003',
+            name: 'Recycled Polyester',
+            category: 'Indian Textiles',
+            image: recycledPolyesterImg,
+            specifications: {
+                'Material': '100% Recycled PET',
+                'Certification': 'GRS Certified',
+                'Width': '58-60 inches',
+                'Weight': '100-300 GSM',
+                'Features': 'Sustainable, Durable',
+                'Packaging': 'Rolls',
+                'MOQ': '1000 meters',
+                'Grade': 'Premium Recycled'
+            }
+        },
+        {
+            id: 'textile-004',
+            name: 'Wool',
+            category: 'Indian Textiles',
+            image: woolImg,
+            specifications: {
+                'Material': '100% Pure Wool',
+                'Type': 'Merino, Pashmina, Regular',
+                'Width': '54-60 inches',
+                'Weight': '200-400 GSM',
+                'Features': 'Warm, Soft, Natural',
+                'Packaging': 'Rolls/Bales',
+                'MOQ': '300 meters',
+                'Grade': 'Premium Quality'
+            }
+        },
+        {
+            id: 'textile-005',
+            name: 'Jute',
+            category: 'Indian Textiles',
+            image: juteImg,
+            specifications: {
+                'Material': '100% Natural Jute',
+                'Type': 'Hessian, Burlap',
+                'Width': '40-72 inches',
+                'Weight': '200-600 GSM',
+                'Features': 'Biodegradable, Eco-Friendly',
+                'Packaging': 'Rolls/Bales',
+                'MOQ': '500 meters',
+                'Grade': 'Premium Natural Fiber'
+            }
+        }
+    ];
+
+    const handleViewSpecifications = (product) => {
+        setSelectedProduct(product);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedProduct(null);
+    };
+
+    // Animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15
+            }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.5
+            }
+        }
+    };
+
     return (
         <div className="category-page">
             {/* Hero Section */}
@@ -72,50 +198,43 @@ const IndianTextiles = () => {
             <section className="product-showcase">
                 <div className="container">
                     <h2>Our Textile Collection</h2>
-                    <div className="product-list">
-                        <div className="product-item">
-                            <h3>Cotton Fabrics</h3>
-                            <p>
-                                Premium Indian cotton fabrics including voile, poplin, and cambric. Available in
-                                solid colors, prints, and traditional block prints. Perfect for apparel and home textiles.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Silk Sarees</h3>
-                            <p>
-                                Exquisite silk sarees from Kanchipuram, Banarasi, and Mysore. Featuring intricate
-                                zari work, traditional motifs, and vibrant colors. A symbol of Indian elegance.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Handloom Products</h3>
-                            <p>
-                                Authentic handloom textiles from various Indian states. Includes Khadi, Chanderi,
-                                and Maheshwari fabrics. Supporting traditional weavers and sustainable practices.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Embroidered Textiles</h3>
-                            <p>
-                                Hand-embroidered fabrics featuring Chikankari, Phulkari, and Kantha work. Perfect
-                                for high-end fashion, home décor, and luxury accessories.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Organic Cotton</h3>
-                            <p>
-                                GOTS-certified organic cotton fabrics in various weaves and weights. Eco-friendly
-                                and sustainable options for conscious fashion brands.
-                            </p>
-                        </div>
-                        <div className="product-item">
-                            <h3>Home Textiles</h3>
-                            <p>
-                                Bed linens, curtains, cushion covers, and table linens. Combining traditional
-                                Indian designs with modern aesthetics for global home décor markets.
-                            </p>
-                        </div>
-                    </div>
+                    <motion.div
+                        className="products-grid-category"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                    >
+                        {textileProducts.map((product) => (
+                            <motion.div
+                                key={product.id}
+                                className="product-card-category"
+                                variants={cardVariants}
+                                whileHover={{ y: -8 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <div className="product-image-wrapper-category">
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        className="product-image-category"
+                                    />
+                                </div>
+                                <div className="product-info-category">
+                                    <span className="product-category-badge-small">
+                                        {product.category}
+                                    </span>
+                                    <h3 className="product-name-category">{product.name}</h3>
+                                    <button
+                                        className="view-specs-btn-category"
+                                        onClick={() => handleViewSpecifications(product)}
+                                    >
+                                        View Specifications
+                                    </button>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
                 </div>
             </section>
 
@@ -134,6 +253,15 @@ const IndianTextiles = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Product Modal */}
+            {isModalOpen && selectedProduct && (
+                <ProductModal
+                    product={selectedProduct}
+                    isOpen={isModalOpen}
+                    onClose={handleCloseModal}
+                />
+            )}
         </div>
     );
 };
