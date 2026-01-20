@@ -7,6 +7,7 @@ import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
+import ProductListing from './pages/ProductListing';
 import ExportProcessPage from './pages/ExportProcessPage';
 import Quality from './pages/Quality';
 import Contact from './pages/Contact';
@@ -28,6 +29,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/catalog" element={<ProductListing />} />
             <Route path="/export-process" element={<ExportProcessPage />} />
             <Route path="/quality" element={<Quality />} />
             <Route path="/contact" element={<Contact />} />

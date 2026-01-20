@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -29,13 +30,22 @@ const Navbar = () => {
     const isActive = (path) => location.pathname === path;
 
     return (
-        <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
+        <motion.nav
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}
+        >
             <div className="container navbar-container">
                 {/* Logo */}
                 <Link to="/" className="navbar-logo">
-                    <div className="logo-wrapper">
+                    <motion.div
+                        className="logo-wrapper"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                    >
                         <img src="/xporia-logo-new.png" alt="Xporia Overseas" className="logo-image" />
-                    </div>
+                    </motion.div>
                 </Link>
 
                 {/* Desktop Navigation */}
@@ -47,13 +57,19 @@ const Navbar = () => {
                             className={`navbar-link ${isActive(link.path) ? 'active' : ''}`}
                         >
                             {link.label}
+                            {isActive(link.path) && (
+                                <motion.div
+                                    layoutId="navbar-underline"
+                                    className="navbar-link-active-indicator"
+                                />
+                            )}
                         </Link>
                     ))}
                 </div>
 
                 {/* CTA Button */}
                 <div className="navbar-actions">
-                    <Link to="/contact" className="btn btn-gold btn-sm">
+                    <Link to="/contact" className="btn btn-gold btn-sm navbar-cta">
                         Request Quote
                     </Link>
                 </div>
@@ -69,28 +85,36 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Menu */}
-            {isMobileMenuOpen && (
-                <div className="navbar-mobile-menu">
-                    {navLinks.map((link) => (
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="navbar-mobile-menu"
+                    >
+                        {navLinks.map((link) => (
+                            <Link
+                                key={link.path}
+                                to={link.path}
+                                className={`navbar-mobile-link ${isActive(link.path) ? 'active' : ''}`}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
                         <Link
-                            key={link.path}
-                            to={link.path}
-                            className={`navbar-mobile-link ${isActive(link.path) ? 'active' : ''}`}
+                            to="/contact"
+                            className="btn btn-gold btn-sm"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
-                            {link.label}
+                            Request Quote
                         </Link>
-                    ))}
-                    <Link
-                        to="/contact"
-                        className="btn btn-gold btn-sm"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                        Request Quote
-                    </Link>
-                </div>
-            )}
-        </nav>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </motion.nav>
     );
 };
 

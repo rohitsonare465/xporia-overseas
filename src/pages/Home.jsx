@@ -3,6 +3,8 @@ import Hero from '../components/Hero';
 import ProductGrid from '../components/ProductGrid';
 import Certifications from '../components/Certifications';
 import ExportProcess from '../components/ExportProcess';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
@@ -16,34 +18,40 @@ const Home = () => {
             {/* Why Choose Us Section */}
             <section className="section why-choose-section">
                 <div className="container">
-                    <div className="section-header">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="section-header"
+                    >
                         <h2 className="section-title">Why Choose Xporia Overseas?</h2>
                         <p className="section-subtitle">
                             Your trusted partner for hassle-free global trade
                         </p>
-                    </div>
+                    </motion.div>
 
                     <div className="why-choose-grid">
-                        <div className="why-choose-card">
-                            <div className="why-choose-icon">🏆</div>
-                            <h3>Premium Quality</h3>
-                            <p>Rigorous quality control ensuring only the best products reach you</p>
-                        </div>
-                        <div className="why-choose-card">
-                            <div className="why-choose-icon">🌍</div>
-                            <h3>Global Reach</h3>
-                            <p>Extensive network connecting businesses across 50+ countries</p>
-                        </div>
-                        <div className="why-choose-card">
-                            <div className="why-choose-icon">⚡</div>
-                            <h3>Fast Delivery</h3>
-                            <p>Efficient logistics ensuring on-time delivery every time</p>
-                        </div>
-                        <div className="why-choose-card">
-                            <div className="why-choose-icon">💎</div>
-                            <h3>Competitive Pricing</h3>
-                            <p>Direct sourcing from manufacturers for best market rates</p>
-                        </div>
+                        {[
+                            { icon: "🏆", title: "Premium Quality", text: "Rigorous quality control ensuring only the best products reach you" },
+                            { icon: "🌍", title: "Global Reach", text: "Extensive network connecting businesses across 50+ countries" },
+                            { icon: "⚡", title: "Fast Delivery", text: "Efficient logistics ensuring on-time delivery every time" },
+                            { icon: "💎", title: "Competitive Pricing", text: "Direct sourcing from manufacturers for best market rates" }
+                        ].map((item, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                whileHover={{ y: -10 }}
+                                className="why-choose-card"
+                            >
+                                <div className="why-choose-icon">{item.icon}</div>
+                                <h3>{item.title}</h3>
+                                <p>{item.text}</p>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -51,13 +59,19 @@ const Home = () => {
             {/* CTA Section */}
             <section className="cta-section">
                 <div className="container">
-                    <div className="cta-content">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="cta-content"
+                    >
                         <h2>Ready to Start Your Export Journey?</h2>
                         <p>Get a free quote and discover how we can help grow your business globally</p>
-                        <a href="/contact" className="btn btn-gold btn-lg">
+                        <Link to="/contact" className="btn btn-gold btn-lg cta-btn">
                             Request Free Quote Now
-                        </a>
-                    </div>
+                        </Link>
+                    </motion.div>
                 </div>
             </section>
         </div>

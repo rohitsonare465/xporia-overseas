@@ -1,10 +1,11 @@
 /* Import Premium Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
 /* ============================================
    DESIGN SYSTEM - XPORIA OVERSEAS
    Luxury Import/Export Website
    Colors: Blue/White primary, Black accents
+   Premium Luxury Redesign
    ============================================ */
 
 :root {
@@ -16,15 +17,18 @@
   --color-bg-light: #F8FAFB;
   --color-bg-white: #FFFFFF;
 
-  /* Secondary Colors - Black Shades (Previously Golden) */
-  --color-gold: #000000;
-  --color-gold-light: #1A1A1A;
-  --color-gold-dark: #000000;
-  --color-gold-metallic: #2C2C2C;
+  /* Secondary Colors - Rich Gold */
+  --color-gold: #C6A87C;
+  --color-gold-light: #E5D5B9;
+  --color-gold-dark: #9E8256;
+  --color-gold-metallic: #D4AF37;
+  --color-gold-shimmer: #Fbf5e9;
 
   /* Accent Colors */
   --color-accent-blue: #2196F3;
   --color-accent-orange: #FF9800;
+  --color-accent-navy: #0d2137;
+  --color-accent-steel: #3a5a7c;
 
   /* Neutral Colors */
   --color-text-primary: #1A2332;
@@ -35,26 +39,36 @@
 
   /* Gradient Definitions */
   --gradient-blue: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-primary-blue-light) 100%);
-  --gradient-gold: linear-gradient(135deg, #000000 0%, #2C2C2C 100%);
+  --gradient-gold: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold) 50%, var(--color-gold-light) 100%);
+  --gradient-gold-hover: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold) 100%);
   --gradient-hero: linear-gradient(135deg, rgba(10, 77, 140, 0.95) 0%, rgba(30, 107, 184, 0.90) 100%);
-  --gradient-overlay: linear-gradient(180deg, rgba(10, 77, 140, 0.8) 0%, rgba(6, 55, 97, 0.95) 100%);
+  --gradient-overlay: linear-gradient(180deg, rgba(6, 55, 97, 0.4) 0%, rgba(6, 55, 97, 0.85) 100%);
+  --gradient-luxury: linear-gradient(135deg, #0d2137 0%, #0A4D8C 50%, #1E6BB8 100%);
+  --gradient-shine: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  --gradient-radial-glow: radial-gradient(circle at center, rgba(198, 168, 124, 0.2) 0%, transparent 70%);
 
   /* Glassmorphism Effects */
-  --glass-bg: rgba(255, 255, 255, 0.1);
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  --glass-premium: rgba(255, 255, 255, 0.15);
+  --glass-dark: rgba(10, 20, 40, 0.7);
 
   /* Shadows - Luxury Multi-layer */
-  --shadow-sm: 0 2px 8px rgba(10, 77, 140, 0.08);
-  --shadow-md: 0 4px 16px rgba(10, 77, 140, 0.12);
-  --shadow-lg: 0 8px 32px rgba(10, 77, 140, 0.16);
-  --shadow-xl: 0 16px 48px rgba(10, 77, 140, 0.20);
-  --shadow-gold: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 2px 8px rgba(10, 77, 140, 0.06);
+  --shadow-md: 0 4px 16px rgba(10, 77, 140, 0.1);
+  --shadow-lg: 0 8px 32px rgba(10, 77, 140, 0.14);
+  --shadow-xl: 0 16px 48px rgba(10, 77, 140, 0.18);
+  --shadow-gold: 0 8px 24px rgba(198, 168, 124, 0.3);
+  --shadow-luxury: 0 20px 50px -10px rgba(10, 77, 140, 0.3), 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 40px rgba(198, 168, 124, 0.25);
+  --shadow-inner-glow: inset 0 2px 20px rgba(255, 255, 255, 0.2);
 
   /* Typography Scale */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
   --font-brand: 'Montserrat', 'Poppins', sans-serif;
+  --font-luxury: 'Cormorant Garamond', Georgia, serif;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -66,6 +80,7 @@
   --text-4xl: 2.25rem;
   --text-5xl: 3rem;
   --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
 
   /* Spacing Scale */
   --space-1: 0.25rem;
@@ -80,6 +95,7 @@
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
+  --space-32: 8rem;
 
   /* Border Radius */
   --radius-sm: 0.375rem;
@@ -87,6 +103,7 @@
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
   --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -94,6 +111,8 @@
   --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --transition-luxury: 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-elastic: 1000ms cubic-bezier(0.68, -0.6, 0.32, 1.6);
 
   /* Z-index Scale */
   --z-base: 1;
@@ -449,6 +468,173 @@ a:hover {
   }
 }
 
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes floatUp {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes morphGlow {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+  50% {
+    border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+    transform: rotate(180deg) scale(1.1);
+  }
+  75% {
+    border-radius: 60% 40% 60% 30% / 70% 30% 50% 60%;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes shineEffect {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 100%;
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(30, 107, 184, 0.3), 0 0 10px rgba(30, 107, 184, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(30, 107, 184, 0.5), 0 0 40px rgba(30, 107, 184, 0.3);
+  }
+}
+
+@keyframes textReveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce3D {
+  0%, 100% {
+    transform: translateY(0) perspective(1000px) rotateX(0);
+  }
+  50% {
+    transform: translateY(-15px) perspective(1000px) rotateX(5deg);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(30, 107, 184, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 25px rgba(30, 107, 184, 0.8));
+  }
+}
+
+@keyframes parallaxFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-20px) translateX(0);
+  }
+  75% {
+    transform: translateY(-10px) translateX(-5px);
+  }
+}
+
 /* Animation Utility Classes */
 .animate-fade-in {
   animation: fadeIn 0.6s ease-out forwards;
@@ -472,6 +658,144 @@ a:hover {
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s var(--transition-luxury) forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.6s ease-out forwards;
+}
+
+.animate-zoom-in {
+  animation: zoomIn 0.7s var(--transition-luxury) forwards;
+}
+
+.animate-rotate-in {
+  animation: rotateIn 0.8s var(--transition-luxury) forwards;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.animate-parallax {
+  animation: parallaxFloat 6s ease-in-out infinite;
+}
+
+.animate-bounce-3d {
+  animation: bounce3D 3s ease-in-out infinite;
+}
+
+/* Staggered Animation Delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+.stagger-7 { animation-delay: 0.7s; }
+.stagger-8 { animation-delay: 0.8s; }
+
+/* Scroll Reveal Classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s var(--transition-luxury);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Luxury Shine Effect */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-25deg);
+  transition: left 0.8s ease;
+}
+
+.shine-effect:hover::after {
+  left: 150%;
+}
+
+/* Magnetic Hover Effect */
+.magnetic-hover {
+  transition: transform 0.3s ease;
+}
+
+/* 3D Tilt Effect */
+.tilt-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.tilt-3d:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+/* Gradient Border Animation */
+.gradient-border {
+  position: relative;
+  background: var(--color-bg-white);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, var(--color-primary-blue), var(--color-primary-blue-light), var(--color-primary-blue));
+  background-size: 300% 300%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* Floating Particles Container */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: floatUp 15s linear infinite;
+}
+
+/* Blur Backdrop */
+.blur-backdrop {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Text Gradient */
+.text-gradient-luxury {
+  background: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-primary-blue-light) 50%, var(--color-primary-white) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* ============================================

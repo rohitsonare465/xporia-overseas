@@ -1,49 +1,98 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as Icons from 'lucide-react';
+import { motion } from 'framer-motion';
 import siteConfig from '../config/siteConfig';
 import './ProductGrid.css';
 
 const ProductGrid = () => {
     const getIcon = (iconName) => {
         const IconComponent = Icons[iconName];
-        return IconComponent ? <IconComponent size={48} /> : <Icons.Package size={48} />;
+        return IconComponent ? <IconComponent size={32} strokeWidth={1.5} /> : <Icons.Package size={32} />;
+    };
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
     };
 
     return (
         <section className="section product-grid-section">
             <div className="container">
                 <div className="section-header">
-                    <h2 className="section-title">Our Product Range</h2>
-                    <p className="section-subtitle">
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="section-title"
+                    >
+                        Our Product Range
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="section-subtitle"
+                    >
                         Explore our diverse catalog of premium export products
-                    </p>
+                    </motion.p>
                 </div>
 
-                <div className="product-grid">
-                    {siteConfig.productCategories.map((category, index) => (
-                        <div
+                <motion.div
+                    className="product-grid"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                >
+                    {siteConfig.productCategories.map((category) => (
+                        <motion.div
                             key={category.id}
-                            className="product-card animate-fade-in-up"
-                            style={{ animationDelay: `${index * 0.1}s` }}
+                            className="product-card"
+                            variants={itemVariants}
+                            whileHover={{ y: -10 }}
                         >
-                            <div className="product-card-icon">
-                                {getIcon(category.icon)}
+                            <div className="product-card-bg"></div>
+                            <div className="product-card-content">
+                                <div className="product-card-icon">
+                                    {getIcon(category.icon)}
+                                </div>
+                                <h3 className="product-card-title">{category.name}</h3>
+                                <p className="product-card-description">{category.description}</p>
+                                <ul className="product-card-items">
+                                    {category.items.slice(0, 3).map((item, idx) => (
+                                        <li key={idx}>
+                                            <span className="bullet">•</span> {item}
+                                        </li>
+                                    ))}
+                                    {category.items.length > 3 && (
+                                        <li className="more-items">+{category.items.length - 3} more</li>
+                                    )}
+                                </ul>
+                                <Link to={`/products/${category.slug}`} className="product-card-link">
+                                    <span>View Collection</span>
+                                    <Icons.ArrowRight size={16} />
+                                </Link>
                             </div>
-                            <h3 className="product-card-title">{category.name}</h3>
-                            <p className="product-card-description">{category.description}</p>
-                            <ul className="product-card-items">
-                                {category.items.map((item, idx) => (
-                                    <li key={idx}>{item}</li>
-                                ))}
-                            </ul>
-                            <Link to={`/products/${category.slug}`} className="product-card-link">
-                                View All Products
-                                <Icons.ArrowRight size={16} />
-                            </Link>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );
