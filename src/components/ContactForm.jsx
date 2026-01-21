@@ -35,7 +35,7 @@ const ContactForm = () => {
                 alert('Thank you! Your message has been sent. We will contact you soon.');
                 setFormData({ name: '', email: '', phone: '', company: '', address: '', message: '' });
             } else if (results.userEmailSent || results.clientEmailSent) {
-                alert('Your message was partially sent. We will get back to you soon.');
+                alert('Thank you for reaching out! We will get back to you soon.');
                 console.warn('Partial email delivery:', results.errors);
             } else {
                 alert('There was an issue sending your message. Please try again or contact us directly.');

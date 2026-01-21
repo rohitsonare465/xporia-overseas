@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send } from 'lucide-react';
-// import emailjs from '@emailjs/browser';
+import { sendQuoteEmails } from '../services/emailService';
 import { useRequestQuote } from '../context/RequestQuoteContext';
 import './RequestQuoteModal.css';
 
@@ -51,38 +51,43 @@ const RequestQuoteModal = () => {
         setSubmitStatus(null);
 
         try {
-            // Replace these with your actual EmailJS credentials
-            // For now using placeholders or checking if env vars allow
-            // const serviceId = 'YOUR_SERVICE_ID';
-            // const templateId = 'YOUR_TEMPLATE_ID';
-            // const publicKey = 'YOUR_PUBLIC_KEY';
+            // Send emails via EmailJS
+            const results = await sendQuoteEmails(formData);
 
-            // Simulating API call if keys are missing to prevent crash during demo
-            // await emailjs.send(serviceId, templateId, formData, publicKey);
+            console.log('Quote Email Results:', results);
 
-            console.log('Form Data to send:', formData);
+            if (results.userEmailSent && results.clientEmailSent) {
+                // Both emails sent successfully
+                setSubmitStatus('success');
+            } else if (results.userEmailSent || results.clientEmailSent) {
+                // At least one email sent
+                setSubmitStatus('success');
+                console.warn('Partial email delivery:', results.errors);
+            } else {
+                // Both failed
+                console.error('Email sending failed:', results.errors);
+                setSubmitStatus('error');
+            }
 
-            // Simulate delay
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            setSubmitStatus('success');
-            setTimeout(() => {
-                closeQuoteModal();
-                setSubmitStatus(null);
-                setFormData({
-                    fullName: '',
-                    email: '',
-                    phone: '',
-                    whatsapp: '',
-                    company: '',
-                    country: '',
-                    product: '',
-                    quantity: '',
-                    message: ''
-                });
-            }, 2000);
+            if (results.userEmailSent || results.clientEmailSent) {
+                setTimeout(() => {
+                    closeQuoteModal();
+                    setSubmitStatus(null);
+                    setFormData({
+                        fullName: '',
+                        email: '',
+                        phone: '',
+                        whatsapp: '',
+                        company: '',
+                        country: '',
+                        product: '',
+                        quantity: '',
+                        message: ''
+                    });
+                }, 2000);
+            }
         } catch (error) {
-            console.error('EmailJS Error:', error);
+            console.error('Quote Submission Error:', error);
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
