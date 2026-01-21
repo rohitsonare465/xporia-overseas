@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin, Twitter, MessageCircle } from 'lucide-react';
 import siteConfig from '../config/siteConfig';
 import './Footer.css';
 
@@ -14,7 +14,7 @@ const Footer = () => {
                     {/* Company Info */}
                     <div className="footer-column">
                         <div className="footer-logo">
-                            <img src="/xporia-logo-new.png" alt="Xporia Overseas" />
+                            <img src="/xporia-logo.jpg" alt="Xporia Overseas" />
                         </div>
                         <p className="footer-description">
                             {siteConfig.company.description}
@@ -49,6 +49,16 @@ const Footer = () => {
                                 aria-label="Twitter"
                             >
                                 <Twitter size={20} />
+                            </a>
+                            <a
+                                href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="footer-social-link"
+                                data-social="whatsapp"
+                                aria-label="WhatsApp"
+                            >
+                                <MessageCircle size={20} />
                             </a>
                         </div>
                     </div>

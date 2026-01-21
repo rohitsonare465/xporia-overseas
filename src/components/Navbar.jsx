@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
 import { useRequestQuote } from '../context/RequestQuoteContext';
+import siteConfig from '../config/siteConfig';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -41,14 +42,20 @@ const Navbar = () => {
             className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}
         >
             <div className="container navbar-container">
-                {/* Logo */}
+                {/* Logo + Brand */}
                 <Link to="/" className="navbar-logo">
                     <motion.div
-                        className="logo-wrapper"
-                        whileHover={{ scale: 1.05 }}
+                        className="navbar-brand"
+                        whileHover={{ scale: 1.03 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <img src="/xporia-logo-new.png" alt="Xporia Overseas" className="logo-image" />
+                        <div className="logo-wrapper">
+                            <img src="/xporia-logo.jpg" alt="Xporia Overseas" className="logo-image" />
+                        </div>
+                        <div className="navbar-brand-text">
+                            <span className="navbar-brand-title">XPORIA OVERSEAS</span>
+                            <span className="navbar-brand-subtitle">Royal Standard of Global Trade</span>
+                        </div>
                     </motion.div>
                 </Link>
 
@@ -71,8 +78,18 @@ const Navbar = () => {
                     ))}
                 </div>
 
-                {/* CTA Button */}
+                {/* CTA Button + WhatsApp */}
                 <div className="navbar-actions">
+                    <a
+                        href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/[^0-9]/g, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="navbar-whatsapp-icon"
+                        aria-label="Chat on WhatsApp"
+                        title="Chat on WhatsApp"
+                    >
+                        <MessageCircle size={22} />
+                    </a>
                     <button onClick={() => openQuoteModal()} className="btn btn-gold btn-sm navbar-cta">
                         Request Quote
                     </button>

@@ -77,6 +77,29 @@
     /* Serif often looks better lighter */
 }
 
+.hero-company-name {
+    display: block;
+    font-family: var(--font-display);
+    /* Match main heading font */
+    font-size: 3rem;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    font-weight: 600;
+    color: var(--color-gold);
+    margin-bottom: 0.25em;
+}
+
+.hero-company-initial {
+    font-size: 3.6rem;
+    line-height: 1;
+}
+
+.hero-subtitle {
+    display: block;
+    font-size: 2.4rem;
+    line-height: 1.2;
+}
+
 .text-gold-serif {
     font-family: 'Playfair Display', serif;
     /* Or similar elegant serif */

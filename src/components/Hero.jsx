@@ -32,7 +32,12 @@ const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="hero-title"
                     >
-                        Experience the <span className="text-gold-serif">Royal Standard</span> of <br /> Global Trade
+                        <span className="hero-company-name">
+                            <span className="hero-company-initial">X</span>poria <span className="hero-company-initial">O</span>verseas
+                        </span>
+                        <span className="hero-subtitle">
+                            Experience the <span className="text-gold-serif">Royal Standard</span> of <br /> Global Trade
+                        </span>
                     </motion.h1>
 
                     <motion.p

@@ -1,5 +1,4 @@
 import React from 'react';
-import { MessageCircle } from 'lucide-react';
 import siteConfig from '../config/siteConfig';
 import './WhatsAppButton.css';
 
@@ -17,7 +16,7 @@ const WhatsAppButton = () => {
             aria-label="Contact us on WhatsApp"
             title="Chat with us on WhatsApp"
         >
-            <MessageCircle size={28} />
+            <span className="whatsapp-icon" aria-hidden="true" />
             <span className="whatsapp-badge">Chat</span>
         </button>
     );

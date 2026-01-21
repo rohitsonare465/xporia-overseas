@@ -31,6 +31,28 @@
     transform: translateY(-2px) scale(1.02);
 }
 
+.whatsapp-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #25D366;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.whatsapp-icon::before {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 60%;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .whatsapp-badge {
     display: none;
 }
