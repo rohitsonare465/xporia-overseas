@@ -16,6 +16,7 @@ import AgriculturalCommodities from './pages/categories/AgriculturalCommodities'
 import AyurvedHerbal from './pages/categories/AyurvedHerbal';
 import EssentialOils from './pages/categories/EssentialOils';
 import IndianTextiles from './pages/categories/IndianTextiles';
+import OnDemandProducts from './pages/categories/OnDemandProducts';
 import './App.css';
 
 import { RequestQuoteProvider } from './context/RequestQuoteContext';
@@ -42,6 +43,7 @@ function App() {
               <Route path="/products/ayurved-herbal" element={<AyurvedHerbal />} />
               <Route path="/products/essential-oils" element={<EssentialOils />} />
               <Route path="/products/indian-textiles" element={<IndianTextiles />} />
+              <Route path="/products/on-demand-products" element={<OnDemandProducts />} />
             </Routes>
           </main>
           <Footer />
