@@ -3,6 +3,7 @@ import Hero from '../components/Hero';
 import ProductGrid from '../components/ProductGrid';
 import Certifications from '../components/Certifications';
 import ExportProcess from '../components/ExportProcess';
+import Reviews from '../components/Reviews';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Home.css';
@@ -14,6 +15,7 @@ const Home = () => {
             <ProductGrid />
             <Certifications />
             <ExportProcess />
+            <Reviews />
 
             {/* Why Choose Us Section */}
             <section className="section why-choose-section">
