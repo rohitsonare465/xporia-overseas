@@ -221,6 +221,8 @@
     top: 100%;
     left: 1.5rem;
     right: 1.5rem;
+    pointer-events: auto;
+    z-index: 9999;
 }
 
 .navbar-mobile-link {
@@ -231,6 +233,9 @@
     padding: 0.75rem 1rem;
     border-radius: 1rem;
     transition: all var(--transition-fast);
+    pointer-events: auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar-mobile-link:hover,
