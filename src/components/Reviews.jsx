@@ -54,7 +54,7 @@ const reviewsData = [
         country: "United Kingdom",
         flag: "🇬🇧",
         rating: 5,
-        review: "Been in the spice trade for 20 years. Xporia Overseas stands out for their consistency and reliability. Their FSSAI and organic certifications give our customers confidence.",
+        review: "Been in the spice trade for 20 years. Xporia Overseas stands out for their consistency and reliability.",
         avatar: "MT",
         product: "Indian Spices"
     },
