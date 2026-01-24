@@ -4,6 +4,7 @@ import { Globe, ShieldCheck, Award } from 'lucide-react';
 import { Link as RouterLink } from 'react-router-dom';
 import siteConfig from '../config/siteConfig';
 import heroCardImg from '../assets/hero-vertical-card.png'; // Updated asset
+import shippingBg from '../assets/shipping-container-bg.jpg'; // Shipping container background
 import './Hero.css';
 
 const Hero = () => {
@@ -11,6 +12,10 @@ const Hero = () => {
 
     return (
         <section className="hero">
+            {/* Blurred Background Image Layer */}
+            <div className="hero-background-image" style={{ backgroundImage: `url(${shippingBg})` }}></div>
+            
+            {/* Decorative Pattern Overlay */}
             <div className="hero-background-pattern"></div>
 
             <div className="container hero-container">
