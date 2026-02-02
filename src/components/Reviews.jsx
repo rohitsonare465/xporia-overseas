@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Reviews.css';
 
@@ -141,6 +141,8 @@ const Reviews = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+    const touchStartX = useRef(0);
+    const touchEndX = useRef(0);
 
     // Number of visible cards based on screen size
     const getVisibleCards = () => {
@@ -183,6 +185,26 @@ const Reviews = () => {
         setIsAutoPlaying(false);
         setDirection(1);
         setCurrentIndex((prev) => (prev + 1) % reviewsData.length);
+    };
+
+    // Touch/Swipe handlers
+    const handleTouchStart = (e) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+
+    const handleTouchMove = (e) => {
+        touchEndX.current = e.touches[0].clientX;
+    };
+
+    const handleTouchEnd = () => {
+        const swipeDistance = touchStartX.current - touchEndX.current;
+        const minSwipeDistance = 50;
+
+        if (swipeDistance > minSwipeDistance) {
+            handleNext();
+        } else if (swipeDistance < -minSwipeDistance) {
+            handlePrev();
+        }
     };
 
     const getVisibleReviews = () => {
@@ -230,7 +252,12 @@ const Reviews = () => {
                         </svg>
                     </button>
 
-                    <div className="reviews-track">
+                    <div 
+                        className="reviews-track"
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                    >
                         <AnimatePresence mode="wait" initial={false}>
                             <motion.div 
                                 key={currentIndex}
@@ -310,34 +337,6 @@ const Reviews = () => {
                     ))}
                 </div>
 
-                {/* Trust Indicators */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                    className="trust-indicators"
-                >
-                    <div className="trust-item">
-                        <span className="trust-number">500+</span>
-                        <span className="trust-label">Happy Clients</span>
-                    </div>
-                    <div className="trust-divider"></div>
-                    <div className="trust-item">
-                        <span className="trust-number">50+</span>
-                        <span className="trust-label">Countries Served</span>
-                    </div>
-                    <div className="trust-divider"></div>
-                    <div className="trust-item">
-                        <span className="trust-number">10K+</span>
-                        <span className="trust-label">Orders Delivered</span>
-                    </div>
-                    <div className="trust-divider"></div>
-                    <div className="trust-item">
-                        <span className="trust-number">4.9</span>
-                        <span className="trust-label">Average Rating</span>
-                    </div>
-                </motion.div>
             </div>
         </section>
     );

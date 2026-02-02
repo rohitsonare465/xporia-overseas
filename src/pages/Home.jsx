@@ -3,7 +3,7 @@ import Hero from '../components/Hero';
 import ProductGrid from '../components/ProductGrid';
 import Certifications from '../components/Certifications';
 import ExportProcess from '../components/ExportProcess';
-import Reviews from '../components/Reviews';
+import Countries from '../components/Countries';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import './Home.css';
@@ -13,9 +13,9 @@ const Home = () => {
         <div className="home-page">
             <Hero />
             <ProductGrid />
-            <Certifications />
+            <Countries />
             <ExportProcess />
-            <Reviews />
+            <Certifications />
 
             {/* Why Choose Us Section */}
             <section className="section why-choose-section">

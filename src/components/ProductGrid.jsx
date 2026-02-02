@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Icons from 'lucide-react';
 import { motion } from 'framer-motion';
 import siteConfig from '../config/siteConfig';
+import allProducts from '../data/allProducts';
+import ProductModal from './ProductModal';
 import './ProductGrid.css';
 
 const ProductGrid = ({ searchQuery = '' }) => {
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const getIcon = (iconName) => {
         const IconComponent = Icons[iconName];
         return IconComponent ? <IconComponent size={32} strokeWidth={1.5} /> : <Icons.Package size={32} />;
@@ -30,6 +35,17 @@ const ProductGrid = ({ searchQuery = '' }) => {
         }
     };
 
+    // Filter individual products when searching
+    const filteredProducts = searchQuery
+        ? allProducts.filter(product => {
+            const query = searchQuery.toLowerCase();
+            return (
+                product.name.toLowerCase().includes(query) ||
+                product.category.toLowerCase().includes(query)
+            );
+        })
+        : [];
+
     const filteredCategories = siteConfig.productCategories.filter(category => {
         if (!searchQuery) return true;
         const query = searchQuery.toLowerCase();
@@ -39,6 +55,19 @@ const ProductGrid = ({ searchQuery = '' }) => {
             category.items.some(item => item.toLowerCase().includes(query))
         );
     });
+
+    const handleViewSpecifications = (product) => {
+        setSelectedProduct(product);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedProduct(null);
+    };
+
+    // Show individual products when searching
+    const showProductResults = searchQuery && filteredProducts.length > 0;
 
     return (
         <section className="section product-grid-section">
@@ -51,7 +80,7 @@ const ProductGrid = ({ searchQuery = '' }) => {
                         transition={{ duration: 0.6 }}
                         className="section-title"
                     >
-                        Our Product Range
+                        {showProductResults ? `Search Results for "${searchQuery}"` : 'Our Product Range'}
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
@@ -60,57 +89,106 @@ const ProductGrid = ({ searchQuery = '' }) => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="section-subtitle"
                     >
-                        Explore our diverse catalog of premium export products
+                        {showProductResults 
+                            ? `Found ${filteredProducts.length} product${filteredProducts.length > 1 ? 's' : ''}`
+                            : 'Explore our diverse catalog of premium export products'
+                        }
                     </motion.p>
                 </div>
 
-                <motion.div
-                    className="product-grid"
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                >
-                    {filteredCategories.length > 0 ? (
-                        filteredCategories.map((category) => (
+                {/* Show individual product results when searching */}
+                {showProductResults ? (
+                    <motion.div
+                        className="product-grid search-results-grid"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                    >
+                        {filteredProducts.map((product) => (
                             <motion.div
-                                key={category.id}
-                                className="product-card"
+                                key={product.id}
+                                className="search-product-card"
                                 variants={itemVariants}
-                                whileHover={{ y: -10 }}
+                                whileHover={{ y: -5 }}
                             >
-                                <div className="product-card-bg"></div>
-                                <div className="product-card-content">
-                                    <div className="product-card-icon">
-                                        {getIcon(category.icon)}
+                                <div className="search-product-image">
+                                    <img src={product.image} alt={product.name} />
+                                </div>
+                                <div className="search-product-content">
+                                    <span className="search-product-category">{product.category}</span>
+                                    <h3 className="search-product-name">{product.name}</h3>
+                                    <div className="search-product-actions">
+                                        <button 
+                                            className="btn-view-specs"
+                                            onClick={() => handleViewSpecifications(product)}
+                                        >
+                                            View Specifications
+                                        </button>
+                                        <Link 
+                                            to={`/products/${product.categorySlug}`} 
+                                            className="btn-view-category"
+                                        >
+                                            View Category
+                                        </Link>
                                     </div>
-                                    <h3 className="product-card-title">{category.name}</h3>
-                                    <p className="product-card-description">{category.description}</p>
-                                    <ul className="product-card-items">
-                                        {category.items.slice(0, 3).map((item, idx) => (
-                                            <li key={idx}>
-                                                <span className="bullet">•</span> {item}
-                                            </li>
-                                        ))}
-                                        {category.items.length > 3 && (
-                                            <li className="more-items">+{category.items.length - 3} more</li>
-                                        )}
-                                    </ul>
-                                    <Link to={`/products/${category.slug}`} className="product-card-link">
-                                        <span>View Collection</span>
-                                        <Icons.ArrowRight size={16} />
-                                    </Link>
                                 </div>
                             </motion.div>
-                        ))
-                    ) : (
-                        <div className="no-results" style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '4rem 0', color: 'var(--color-text-secondary)' }}>
-                            <h3>No products found matching "{searchQuery}"</h3>
-                            <p>Try searching for categories like "Spices" or "Textiles"</p>
-                        </div>
-                    )}
-                </motion.div>
+                        ))}
+                    </motion.div>
+                ) : (
+                    <motion.div
+                        className="product-grid"
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-50px" }}
+                    >
+                        {filteredCategories.length > 0 ? (
+                            filteredCategories.map((category) => (
+                                <motion.div
+                                    key={category.id}
+                                    className="product-card"
+                                    variants={itemVariants}
+                                    whileHover={{ y: -10 }}
+                                >
+                                    <div className="product-card-bg"></div>
+                                    <div className="product-card-content">
+                                        <div className="product-card-icon">
+                                            {getIcon(category.icon)}
+                                        </div>
+                                        <h3 className="product-card-title">{category.name}</h3>
+                                        <p className="product-card-description">{category.description}</p>
+                                        <ul className="product-card-items">
+                                            {category.items.map((item, idx) => (
+                                                <li key={idx}>
+                                                    <span className="bullet">•</span> {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <Link to={`/products/${category.slug}`} className="product-card-link">
+                                            <span>View Collection</span>
+                                            <Icons.ArrowRight size={16} />
+                                        </Link>
+                                    </div>
+                                </motion.div>
+                            ))
+                        ) : (
+                            <div className="no-results" style={{ gridColumn: '1 / -1', textAlign: 'center', padding: '4rem 0', color: 'var(--color-text-secondary)' }}>
+                                <h3>No products found matching "{searchQuery}"</h3>
+                                <p>Try searching for products like "Rice", "Turmeric", or "Ashwagandha"</p>
+                            </div>
+                        )}
+                    </motion.div>
+                )}
             </div>
+
+            {/* Product Modal */}
+            <ProductModal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+                product={selectedProduct}
+            />
         </section>
     );
 };

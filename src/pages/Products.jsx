@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Search } from 'lucide-react';
 import ProductGrid from '../components/ProductGrid';
 import './Products.css';
 
 const Products = () => {
     const [searchQuery, setSearchQuery] = useState('');
+    const productGridRef = useRef(null);
+
+    // Scroll to product grid when user starts searching
+    useEffect(() => {
+        if (searchQuery && productGridRef.current) {
+            productGridRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, [searchQuery]);
 
     return (
         <div className="products-page">
@@ -72,7 +80,9 @@ const Products = () => {
             </section>
 
             {/* Product Categories */}
-            <ProductGrid searchQuery={searchQuery} />
+            <div ref={productGridRef}>
+                <ProductGrid searchQuery={searchQuery} />
+            </div>
 
             {/* Call to Action */}
             <section className="section products-cta-section">

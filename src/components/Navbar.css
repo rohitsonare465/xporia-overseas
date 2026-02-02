@@ -27,20 +27,20 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: radial-gradient(circle at 30% 0%, #ffffff 0%, #d5dde8 35%, #020b26 100%);
-    border: 2px solid rgba(198, 168, 124, 0.9);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
-    overflow: hidden;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    overflow: visible;
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .logo-image {
-    width: 88%;
-    height: 88%;
-    object-fit: cover;
-    border-radius: 50%; /* ensure logo itself is perfectly circular */
-    background-color: transparent; /* keeps PNG transparency clean */
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
 }
 
 .navbar-brand-text {
